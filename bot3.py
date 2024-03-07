@@ -116,6 +116,10 @@ def Opciones(message):
 
     bot.send_message(message.chat.id, '¡Bienvenido! ¿Deseas crear una cuenta?', reply_markup=markup)
 
+var = []
+
+@bot.callback_query_handler(func=lambda call:call.data == 'VerLista')
+
     
 
 
