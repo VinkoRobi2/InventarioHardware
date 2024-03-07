@@ -103,7 +103,7 @@ def guardar_datos_en_archivo(name, lastname, telegram_id):
 def Opciones(message):
     markup = InlineKeyboardMarkup(row_width=1)
     item1 = InlineKeyboardButton('Ver Lista',callback_data='VerLista')
-    item3 = InlineKeyboardButton('Agregar Item', callback_data='AgregarItem')
+    item3 = InlineKeyboardButton('Agregar Categoria', callback_data='AgregarCategoria')
     item4 = InlineKeyboardButton('Eliminar Item', callback_data='EliminarItem')
     item2 = InlineKeyboardButton('Salir', callback_data='Salir')
     markup.add(item1,item3,item4,item2)
@@ -118,7 +118,7 @@ def Opciones(message):
 
 var = []
 
-@bot.callback_query_handler(func=lambda call:call.data == 'VerLista')
+
 
     
 
@@ -171,10 +171,4 @@ def handle_message(message):
 
 
 bot.polling()
-
-
-
-
-
-
 
