@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
         "Apellido": "Drnasin",
@@ -5,3 +6,6 @@
         "Nombre": "Vinko"
     }
 ]
+=======
+[]
+>>>>>>> 4559c72c6603d18bf851dd6b1486e7e20a00f82a
