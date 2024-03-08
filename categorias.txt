@@ -1,0 +1,22 @@
+{
+  "categorias": [
+    "Herramientas",
+    "Consumibles",
+    "Clean Acces",
+    "Katuk Cobranza",
+    "Katuk Granel",
+    "Katuk Control",
+    "Katuk Organizadores",
+    "Lan",
+    "Computacion",
+    "Sensores",
+    "Actuadores",
+    "Fuentes de Poder",
+    "Diseño",
+    "Sistemas Embebidos",
+    "Pantallas",
+    "Camaras",
+    "Case Plasticos"
+  ]
+}
+
