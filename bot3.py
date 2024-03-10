@@ -8,9 +8,9 @@ Telegram_Api = '6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og'
 bot = telebot.TeleBot(Telegram_Api)
 bot_activado = True
 ContrasenaG = 1012020
-path = 'usuarios.txt'
-pathC = 'categorias.txt'
-pathI = 'Items.txt'
+path = 'InventarioHardware\\usuarios.txt'
+pathC = 'InventarioHardware\\categorias.txt'
+pathI = 'InventarioHardware\\items.txt'
 
 
 
@@ -57,12 +57,13 @@ def guardar_nombre(message):
     bot.register_next_step_handler(message, guardar_apellido)
 
 
-
 def cargar_categorias():
     with open(pathC, 'r') as file:
         categorias_data = json.load(file)
-        return categorias_data.get('categorias', [])
-    
+        return categorias_data.get('categorias', {})
+
+categorias = cargar_categorias()
+print(categorias)
 
 
 def obtener_items_por_categoria(categoria):
@@ -96,20 +97,20 @@ def cargar_items():
 
 
 def construir_botones_categorias():
-    keyboard = types.InlineKeyboardMarkup()
-    categorias = cargar_categorias()
-    categorias_por_pares = [categorias[i:i+2] for i in range(0, len(categorias), 2)]
-    for par in categorias_por_pares:
-        buttons_row = []
-        for categoria in par:
-            texto_boton = categoria
-            callback_data = f"verificar_{categoria}"
-            button = types.InlineKeyboardButton(text=texto_boton, callback_data=callback_data)
-            buttons_row.append(button)
-        keyboard.add(*buttons_row)
+    # Convertir el diccionario de categorías en una lista de tuplas
+    categorias_lista = list(categorias.items())
+    # Dividir la lista en sublistas de dos elementos cada una
+    categorias_por_pares = [categorias_lista[i:i+2] for i in range(0, len(categorias_lista), 2)]
+
+    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    for categoria_par in categorias_por_pares:
+        buttons = []
+        for categoria in categoria_par:
+            nombre_categoria = categoria[0]
+            button = types.InlineKeyboardButton(text=nombre_categoria, callback_data=nombre_categoria)
+            buttons.append(button)
+        keyboard.add(*buttons)
     
-    button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
-    keyboard.add(button_salir)
     return keyboard
 
 def BotonesCategoria(call):

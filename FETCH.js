@@ -1,18 +1,15 @@
 
-const { json } = require("react-router-dom")
-const url = 'https://pokeapi.co/api/v2/pokemon/ditto';
+const fs = require('fs');
 
-fetch(url)
-.then(response =>{
-    if(response.ok){
-        return response.json()
-    }else{
-        throw new Error('Ha ocurrido un error')
-}})
-.then(data =>{
-    data.abilities.forEach(ability => {
-        console.log(ability.ability.name)
-    });
-}
+// Ruta del archivo .txt a leer
+const filePath = 'InventarioHardware/items.txt';
 
-)
+// Leer el archivo .txt de forma asíncrona
+fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    // Aquí puedes trabajar con el contenido del archivo
+    console.log(data)
+});
