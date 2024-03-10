@@ -2,12 +2,15 @@ import telebot
 from  telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 import random
 import requests
+from telebot import types
 import json
 Telegram_Api = '6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og'
 bot = telebot.TeleBot(Telegram_Api)
 bot_activado = True
 ContrasenaG = 1012020
-path = 'InventarioHardware\\usuarios.txt'
+path = 'usuarios.txt'
+pathC = 'categorias.txt'
+pathI = 'Items.txt'
 
 
 
@@ -36,8 +39,13 @@ def handle_button_click(call):
         bot.register_next_step_handler(call.message, guardar_nombre)
     elif call.data == 'later':
         Regresar(call.message)
+    if call.data.startswith('verificar_'):
+        categoria = call.data.split('_')[1]
+        enviar_items(call, categoria)
     elif call.data == 'Salir':
         Regresar(call.message)
+    elif call.data == 'VerLista':
+        BotonesCategoria(call)
 
 
 
@@ -47,6 +55,70 @@ def guardar_nombre(message):
     name = (name)
     bot.send_message(message.chat.id, "Ahora ingresa tu Apellido:")
     bot.register_next_step_handler(message, guardar_apellido)
+
+
+
+def cargar_categorias():
+    with open(pathC, 'r') as file:
+        categorias_data = json.load(file)
+        return categorias_data.get('categorias', [])
+    
+
+
+def obtener_items_por_categoria(categoria):
+    items = cargar_items()
+    for categoria_data in items['inventario']:
+        if categoria_data['categoria'] == categoria:
+            return categoria_data['items']
+    return []
+
+def enviar_items(call, categoria):
+    items = obtener_items_por_categoria(categoria)
+    if items:
+        keyboard = types.InlineKeyboardMarkup(row_width=2)
+        for item in items:
+            texto_boton = item['nombre']
+            callback_data = f"verificar_item_{item['nombre']}"
+            button = types.InlineKeyboardButton(text=texto_boton, callback_data=callback_data)
+            keyboard.add(button)
+        button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
+        keyboard.add(button_salir)
+        bot.send_message(call.message.chat.id, f"Items para la categoría {categoria}:", reply_markup=keyboard)
+    else:
+        bot.send_message(call.message.chat.id, f"No hay items para la categoría {categoria}")
+
+
+
+def cargar_items():
+    with open(pathI, 'r') as file:
+        items_data = json.load(file)
+        return items_data
+
+
+def construir_botones_categorias():
+    keyboard = types.InlineKeyboardMarkup()
+    categorias = cargar_categorias()
+    categorias_por_pares = [categorias[i:i+2] for i in range(0, len(categorias), 2)]
+    for par in categorias_por_pares:
+        buttons_row = []
+        for categoria in par:
+            texto_boton = categoria
+            callback_data = f"verificar_{categoria}"
+            button = types.InlineKeyboardButton(text=texto_boton, callback_data=callback_data)
+            buttons_row.append(button)
+        keyboard.add(*buttons_row)
+    
+    button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
+    keyboard.add(button_salir)
+    return keyboard
+
+def BotonesCategoria(call):
+    keyboard = construir_botones_categorias()
+    bot.send_message(call.message.chat.id, "Botones para todas las categorías:", reply_markup=keyboard)
+
+
+
+
 
 
 
