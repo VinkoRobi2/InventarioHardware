@@ -1,4 +1,5 @@
 {
+
     "categorias": {
         "Herramientas": [
             { "cantidad": 1, "nombre": "Taladro" },
@@ -42,7 +43,7 @@
             { "cantidad": 1, "nombre": "Sprite color blanco" },
             { "cantidad": 36, "nombre": "Royos de cable calibre 18 AWG" }
         ],
-        "Proyecto: Clean Access": [
+        " Clean Access": [
             { "cantidad": 6, "nombre": "Raspberry pi y zero" },
             { "cantidad": 3, "nombre": "Fuente de 12V a 2A" },
             { "cantidad": 3, "nombre": "Adaptador USB - Bornera" },
@@ -57,42 +58,42 @@
             { "cantidad": 1, "nombre": "Pegatanque Usado" },
             { "cantidad": 1, "nombre": "Pantalla 7\" Touch Screen Mal estado pasa esto a json" }
         ],
-        "Proyecto: Katuk Cobranza": [
+        " Katuk Cobranza": [
             { "cantidad": 1, "nombre": "Nayax" },
             { "cantidad": 1, "nombre": "Kit cables MDB" },
             { "cantidad": 1, "nombre": "Tarjeta electrónica MDB" },
             { "cantidad": 1, "nombre": "Fuente de 244 V 1.25A" }
         ],
-        "Proyecto: Katuk Granel": [
+        " Katuk Granel": [
             { "cantidad": 1, "nombre": "Driver Fuyu" },
             { "cantidad": 1, "nombre": "Arduino nano IOT" },
             { "cantidad": 1, "nombre": "Shield Arduino nano" },
             { "cantidad": 1, "nombre": "Tronillos sin fin" },
             { "cantidad": 5, "nombre": "Acoples de eje" }
         ],
-        "Proyecto: Katuk Control": [
+        " Katuk Control": [
             { "cantidad": 1, "nombre": "Realy de 16 canales" },
             { "cantidad": 1, "nombre": "IO Expander" },
             { "cantidad": 1, "nombre": "Kit adaptadores IO Expander" },
             { "cantidad": 2, "nombre": "Placas de optoacopladores" },
             { "cantidad": 6, "nombre": "Cable Jumper" }
         ],
-        "Proyecto: Katuk Organizadores": [
+        " Katuk Organizadores": [
             { "cantidad": 0, "nombre": "Shield Expando Arduino Mega" },
             { "cantidad": 23, "nombre": "Soportes PCB riel din para placas" },
             { "cantidad": 0, "nombre": "Cables USBA a Jumper" }
         ],
-        "Proyecto: Lan": [
+        " Lan": [
             { "cantidad": 1, "nombre": "Router" },
             { "cantidad": 1, "nombre": "Switch", "observacion": "Sin fuente" }
         ],
-        "Proyecto: Computación": [
+        " Computacion": [
             { "cantidad": 1, "nombre": "Teclados" },
             { "cantidad": 1, "nombre": "Mouses" },
             { "cantidad": 2, "nombre": "Micrófonos" }
         ],
         
-        "Proyecto: Sensores": [
+        " Sensores": [
             { "cantidad": 0, "nombre": "Sensor de distancia" },
             { "cantidad": 0, "nombre": "Sensor de frecuencia de luz" },
             { "cantidad": 0, "nombre": "Sensor de humedad" },
@@ -106,7 +107,7 @@
             { "cantidad": 0, "nombre": "Sensor magnético" },
             { "cantidad": 0, "nombre": "Sensor óptico" }
         ],
-        "Proyecto: Actuadores": [
+        " Actuadores": [
             { "cantidad": 0, "nombre": "Actuador de imanes permanentes" },
             { "cantidad": 0, "nombre": "Actuador de reluctancia variable" },
             { "cantidad": 0, "nombre": "Actuador híbrido" },
@@ -119,7 +120,7 @@
             { "cantidad": 0, "nombre": "Motor nema 34" },
             { "cantidad": 0, "nombre": "Actuador lineal" }
         ],
-        "Proyecto: Fuentes de poder": [
+        " Fuentes de poder": [
             { "cantidad": 0, "nombre": "Fuente de 5V 1A" },
             { "cantidad": 0, "nombre": "Fuente de 5V 2A" },
             { "cantidad": 0, "nombre": "Fuente de 5V 3A" },
@@ -129,11 +130,11 @@
             { "cantidad": 0, "nombre": "Fuente de 24V 20A" },
             { "cantidad": 0, "nombre": "Fuente generica" }
         ],
-        "Proyecto: Diseño": [
+        " Diseño": [
             { "cantidad": 0, "nombre": "Impresora 3D" },
             { "cantidad": 0, "nombre": "Cortadora laser" }
         ],
-        "Proyecto: Sistemas embebidos": [
+        " Sistemas embebidos": [
             { "cantidad": 0, "nombre": "Arduino uno" },
             { "cantidad": 0, "nombre": "Arduino Mega" },
             { "cantidad": 0, "nombre": "Arduino Nano" },
@@ -143,19 +144,19 @@
             { "cantidad": 0, "nombre": "Raspberry PI 4 MODEL B" },
             { "cantidad": 0, "nombre": "Nvidia Jetson" }
         ],
-        "Proyecto: Pantallas": [
+        " Pantallas": [
             { "cantidad": 0, "nombre": "Pantalla touch safe entry" },
             { "cantidad": 1, "nombre": "Pantalla 7\" Touch Screen", "observacion": "Mal estado" },
             { "cantidad": 0, "nombre": "Pantalla LCD 16X2" },
             { "cantidad": 1, "nombre": "Pantalla OLED" }
         ],
-        "Proyecto: Camaras": [
+        " Camaras": [
             { "cantidad": 0, "nombre": "Camara PTZ" },
             { "cantidad": 0, "nombre": "Camara bala" },
             { "cantidad": 0, "nombre": "Camara raspberry" },
             { "cantidad": 0, "nombre": "Camara Arducan" }
         ],
-        "Proyecto: Case plasticos": [
+        " Case plasticos": [
             { "cantidad": 0, "nombre": "Policase" },
             { "cantidad": 0, "nombre": "Policase pequeños" },
             { "cantidad": 0, "nombre": "Policase medianos" },
@@ -163,6 +164,7 @@
             { "cantidad": 0, "nombre": "Caja generica", "observacion": "diferentes tamaños" }
         ]
     }
-}
+    }
+
 
  

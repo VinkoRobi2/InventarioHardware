@@ -65,13 +65,12 @@ def cargar_categorias():
 categorias = cargar_categorias()
 print(categorias)
 
-
 def obtener_items_por_categoria(categoria):
     items = cargar_items()
-    for categoria_data in items['inventario']:
-        if categoria_data['categoria'] == categoria:
-            return categoria_data['items']
-    return []
+    categorias = items.get('inventario', {}).get('categorias', {})
+    return categorias.get(categoria, [])
+
+
 
 def enviar_items(call, categoria):
     items = obtener_items_por_categoria(categoria)
@@ -97,9 +96,7 @@ def cargar_items():
 
 
 def construir_botones_categorias():
-    # Convertir el diccionario de categorías en una lista de tuplas
     categorias_lista = list(categorias.items())
-    # Dividir la lista en sublistas de dos elementos cada una
     categorias_por_pares = [categorias_lista[i:i+2] for i in range(0, len(categorias_lista), 2)]
 
     keyboard = types.InlineKeyboardMarkup(row_width=2)
