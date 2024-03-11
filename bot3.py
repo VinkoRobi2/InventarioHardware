@@ -8,9 +8,8 @@ Telegram_Api = '6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og'
 bot = telebot.TeleBot(Telegram_Api)
 bot_activado = True
 ContrasenaG = 1012020
-path = 'InventarioHardware\\usuarios.txt'
-pathC = 'InventarioHardware\\categorias.txt'
-pathI = 'InventarioHardware\\items.txt'
+path = 'usuarios.txt'
+pathC = 'categorias.txt'
 
 
 
@@ -46,7 +45,8 @@ def handle_button_click(call):
         Regresar(call.message)
     elif call.data == 'VerLista':
         BotonesCategoria(call)
-
+    elif call.data in categorias: 
+        enviar_items(call, call.data) 
 
 
 def guardar_nombre(message):
@@ -67,8 +67,7 @@ print(categorias)
 
 def obtener_items_por_categoria(categoria):
     items = cargar_items()
-    categorias = items.get('inventario', {}).get('categorias', {})
-    return categorias.get(categoria, [])
+    return items.get('categorias', {}).get(categoria, [])
 
 
 
@@ -90,7 +89,7 @@ def enviar_items(call, categoria):
 
 
 def cargar_items():
-    with open(pathI, 'r') as file:
+    with open(pathC, 'r') as file:
         items_data = json.load(file)
         return items_data
 
