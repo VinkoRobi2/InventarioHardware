@@ -25,7 +25,7 @@
                 { "cantidad": 1, "nombre": "Estación de soldadura","descripcion":"Estacion de Soldar marca:Weller"}
             ],
             "Consumibles": [
-                { "cantidad": 1, "nombre": "Caja Plusivo" ,"descripcion":"dfdfffdfdfdfdfdfdfdfdf" },
+                { "cantidad": 11, "nombre": "Caja Plusivo" ,"descripcion":"Caja Plusivo marca:Fermery" },
                 { "cantidad": 2, "nombre": "Kit Molex JST-XH" ,"descripcion":"dfdfffdfdfdfdfdfdfdfdf"},
                 { "cantidad": 1, "nombre": "Kit Soporte metálico" ,"descripcion":"dfdfffdfdfdfdfdfdfdfdf"},
                 { "cantidad": 3, "nombre": "Rollos cables calibre 14 AWG" ,"descripcion":"dfdfffdfdfdfdfdfdfdfdf"},
@@ -164,4 +164,3 @@
     }
 
 
- 
