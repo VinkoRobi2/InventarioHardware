@@ -12,7 +12,7 @@
                 { "cantidad": 7, "nombre": "Desarmadores plano","descripcion":"Kit de 7 Desarmadores planos marca: Stanley" },
                 { "cantidad": 2, "nombre": "Kit de brocas","descripcion":"Kit de Brocas marcas:HotDeal"},
                 { "cantidad": 1, "nombre": "Pela cable","descripcion":"Pela cable marca WGGE"},
-                { "cantidad": 1, "nombre": "Corta cable","descripcion":"dfdfffdfdfdfdfdfdfdfdf"},
+                { "cantidad": 1, "nombre": "Corta cable","descripcion":"No disponible"},
                 { "cantidad": 1, "nombre": "Remachadora terminal redondo","descripcion":"Remachadora terminal redonda marca Allein Tools"},
                 { "cantidad": 1, "nombre": "Remachadora terminal jumper","descripcion":"Remachadora terminal Jumper marca Qilbaok"},
                 { "cantidad": 1, "nombre": "Multimetro de banco","descripcion":"Multimetro de banco marca:Siglent"},
@@ -20,7 +20,7 @@
                 { "cantidad": 1, "nombre": "Fuente de poder","descripcion":"Fuente de poder marca:Siglent"},
                 { "cantidad": 1, "nombre": "Martillo","descripcion":"No hay marca"},
                 { "cantidad": 1, "nombre": "Etiquetadora","descripcion":"Etiquetadora marca:Brady"},
-                { "cantidad": 1, "nombre": "Pistola de calor","descripcion": "No disponible"},
+                { "cantidad": 1, "nombre": "Pistola de calor","descripcion": "Pistola de carlor marca:Quick"},
                 { "cantidad": 1, "nombre": "Cortadora Laser","descripcion":"Cortadora laser marca:AtoMSTACK"},
                 { "cantidad": 1, "nombre": "Estación de soldadura","descripcion":"Estacion de Soldar marca:Weller"}
             ],
@@ -162,5 +162,4 @@
             ]
         }
     }
-
 
