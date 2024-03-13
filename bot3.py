@@ -1,7 +1,5 @@
 import telebot
 from  telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
-import random
-import requests
 from telebot import types
 import json
 Telegram_Api = '6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og'
@@ -9,7 +7,8 @@ bot = telebot.TeleBot(Telegram_Api)
 bot_activado = True
 ContrasenaG = 1012020
 path = 'usuarios.txt'
-pathC = 'categorias.txt'
+pathC = 'C:\\Users\\rnavas\\Desktop\\python\\categorias.txt'
+
 
 
 
@@ -59,8 +58,9 @@ def guardar_nombre(message):
 
 def cargar_categorias():
     with open(pathC, 'r') as file:
-        categorias_data = json.load(file)
-        return categorias_data.get('categorias', {})
+        data = json.load(file)
+        return data.get('categorias', {})
+
 
 categorias = cargar_categorias()
 print(categorias)
@@ -76,7 +76,7 @@ def enviar_items(call, categoria):
     if items:
         keyboard = types.InlineKeyboardMarkup(row_width=2)
         for item in items:
-            texto_boton = item['nombre']
+            texto_boton = f"{item['nombre']} - Cantidad: {item['cantidad']}"
             callback_data = f"verificar_item_{item['nombre']}"
             button = types.InlineKeyboardButton(text=texto_boton, callback_data=callback_data)
             keyboard.add(button)
@@ -85,7 +85,6 @@ def enviar_items(call, categoria):
         bot.send_message(call.message.chat.id, f"Items para la categoría {categoria}:", reply_markup=keyboard)
     else:
         bot.send_message(call.message.chat.id, f"No hay items para la categoría {categoria}")
-
 
 
 def cargar_items():
@@ -169,7 +168,6 @@ def guardar_datos_en_archivo(name, lastname, telegram_id):
 
 
 
-
 def Opciones(message):
     global markup
     markup = InlineKeyboardMarkup(row_width=1)
@@ -186,10 +184,6 @@ def Opciones(message):
             return
 
     bot.send_message(message.chat.id, '¡Bienvenido! ¿Deseas crear una cuenta?', reply_markup=markup)
-
-
-
-
 
     
 
@@ -222,11 +216,6 @@ def cargar_usuarios():
 usuarios = cargar_usuarios()
 
 
-
-
-
-
-
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
       
@@ -237,8 +226,6 @@ def handle_message(message):
       else:
           print(telegram_id)
           on_any_message(message)
-
-
 
 
 bot.polling()
