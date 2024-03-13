@@ -35,6 +35,9 @@ def handle_button_click(call):
     if call.data == 'Si1':
         bot.send_message(call.message.chat.id, "Por favor ingresa tu Nombre:")
         bot.register_next_step_handler(call.message, guardar_nombre)
+    elif call.data.startswith('verificar_item_'):
+        item_nombre = call.data[len('verificar_item_'):]
+        mostrar_descripcion(call, item_nombre)
     elif call.data == 'later':
         Regresar(call.message)
     if call.data.startswith('verificar_'):
@@ -67,10 +70,11 @@ print(categorias)
 
 def obtener_items_por_categoria(categoria):
     items = cargar_items()
-    return items.get('categorias', {}).get(categoria, [])
+    categorias = items.get('categorias', {})
+    return categorias.get(categoria, [])
 
 
-
+########################################################
 def enviar_items(call, categoria):
     items = obtener_items_por_categoria(categoria)
     if items:
@@ -86,6 +90,24 @@ def enviar_items(call, categoria):
     else:
         bot.send_message(call.message.chat.id, f"No hay items para la categoría {categoria}")
 
+def mostrar_descripcion(call, item_nombre):
+    item = obtener_item_por_nombre(item_nombre)
+    if item:
+        descripcion = item.get('descripcion', 'No hay descripción disponible')
+        bot.send_message(call.message.chat.id, f"Descripción de {item_nombre}:\n{descripcion}")
+    else:
+        bot.send_message(call.message.chat.id, f"No se encontró la descripción para {item_nombre}")
+
+##########################################################################################
+
+
+def obtener_item_por_nombre(nombre):
+    items = cargar_items()
+    for categoria, lista_items in items.get('categorias', {}).items():
+        for item in lista_items:
+            if item['nombre'] == nombre:
+                return item
+    return None
 
 def cargar_items():
     with open(pathC, 'r') as file:
