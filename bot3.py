@@ -50,6 +50,9 @@ def handle_button_click(call):
         BotonesCategoria(call)
     elif call.data in categorias: 
         enviar_items(call, call.data) 
+    elif call.data == 'AgregarCategoria':
+         handle_agregar_categoria(call)
+
 
 
 def guardar_nombre(message):
@@ -75,7 +78,7 @@ def obtener_items_por_categoria(categoria):
     return categorias.get(categoria, [])
 
 
-########################################################
+
 def enviar_items(call, categoria):
     items = obtener_items_por_categoria(categoria)
     if items:
@@ -103,8 +106,11 @@ def mostrar_descripcion(call, item_nombre):
             imagen_url = item['imagen_url']
             response = requests.get(imagen_url)
             if response.status_code == 200:
-
                 bot.send_photo(call.message.chat.id, response.content, caption="Imagen del artículo:")
+                markup = InlineKeyboardMarkup()
+                volver_button = InlineKeyboardButton('Volver', callback_data='Volver')
+                markup.add(volver_button)
+                bot.send_message(call.message.chat.id, '¿Deseas volver?', reply_markup=markup)
             else:
                 bot.send_message(call.message.chat.id, f"No se pudo obtener la imagen para {item_nombre}")
         else:
@@ -113,8 +119,30 @@ def mostrar_descripcion(call, item_nombre):
         bot.send_message(call.message.chat.id, f"No se encontró la descripción para {item_nombre}")
 
 
-
 ##########################################################################################
+def agregar_categoria(message):
+    bot.send_message(message.chat.id, "Por favor ingresa el nombre de la nueva categoría:")
+    bot.register_next_step_handler(message, guardar_categoria)
+
+
+def guardar_categoria(message):
+    nombre_categoria = message.text
+    categorias = cargar_categorias()
+    if nombre_categoria in categorias:
+        bot.send_message(message.chat.id, "¡La categoría ya existe!")
+        return
+    categorias[nombre_categoria] = []
+
+    with open(pathC, 'w') as file:
+        json.dump({"categorias": categorias}, file, indent=4)
+
+    bot.send_message(message.chat.id, f"La categoría '{nombre_categoria}' se ha agregado correctamente.")
+    BotonesCategoria(message)
+
+def handle_agregar_categoria(call):
+    agregar_categoria(call.message)
+
+################################################################################################
 
 
 def obtener_item_por_nombre(nombre):
