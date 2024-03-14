@@ -1,4 +1,5 @@
 import telebot
+import requests
 from  telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 from telebot import types
 import json
@@ -90,13 +91,28 @@ def enviar_items(call, categoria):
     else:
         bot.send_message(call.message.chat.id, f"No hay items para la categoría {categoria}")
 
+
+
 def mostrar_descripcion(call, item_nombre):
     item = obtener_item_por_nombre(item_nombre)
     if item:
         descripcion = item.get('descripcion', 'No hay descripción disponible')
         bot.send_message(call.message.chat.id, f"Descripción de {item_nombre}:\n{descripcion}")
+        
+        if 'imagen_url' in item:
+            imagen_url = item['imagen_url']
+            response = requests.get(imagen_url)
+            if response.status_code == 200:
+
+                bot.send_photo(call.message.chat.id, response.content, caption="Imagen del artículo:")
+            else:
+                bot.send_message(call.message.chat.id, f"No se pudo obtener la imagen para {item_nombre}")
+        else:
+            bot.send_message(call.message.chat.id, f"No hay imagen disponible para {item_nombre}")
     else:
         bot.send_message(call.message.chat.id, f"No se encontró la descripción para {item_nombre}")
+
+
 
 ##########################################################################################
 
