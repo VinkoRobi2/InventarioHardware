@@ -1,708 +1,709 @@
 {
-   "categorias":{
-      "Herramientas":[
-         {
-            "cantidad":1,
-            "nombre":"Taladro",
-            "descripcion":"Taladro Percutor de 550W marca: Black Decker",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Taladro.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Pulpo de soldar",
-            "descripcion":"Soporte de soldadura con base de metal con recubrimiento en polvo",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Pulpo%20de%20Soldar.jpeg?raw=true"
-         },
-         {
-            "cantidad":8,
-            "nombre":"Llaves mecánicas diferentes",
-            "descripcion":"LLaves mecánicas marca tactix de diferentes tamaños",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Llaves%20mecanicas.jpeg?raw=true"
-         },
-         {
-            "cantidad":2,
-            "nombre":"Pistola de silicona",
-            "descripcion":"Pistola de silicona marca Celina",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/pistola%20de%20silicon.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Dremel",
-            "descripcion":"Motor de alto rendimiento de 1.2 amperios",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Dremel.jpeg?raw=true"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Kit de adaptadores Dremel",
-            "descripcion":"No disponible",
-            "imagen_url":""
-         },
-         {
-            "cantidad":1,
-            "nombre":"Kit llaves allen",
-            "descripcion":"Kit de 13 llves",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20llaves%20Allen.jpeg?raw=true"
-         },
-         {
-            "cantidad":4,
-            "nombre":"Desarmadores estrellas",
-            "descripcion":"Kit de Desarmadores marca: Stanley",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Desarmadores%20Estrellas.jpeg?raw=true"
-         },
-         {
-            "cantidad":7,
-            "nombre":"Desarmadores plano",
-            "descripcion":"Kit de 7 Desarmadores planos marca: Stanley",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Desarmadores%20planos.jpeg?raw=true"
-         },
-         {
-            "cantidad":2,
-            "nombre":"Kit de brocas",
-            "descripcion":"Kit de Brocas marcas:HotDeal",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20de%20Brocas.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Pela cable",
-            "descripcion":"Pela cable marca WGGE",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Pela%20cable%20WGGE.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Corta cable",
-            "descripcion":"No disponible",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Remachadora%20Redondo.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Remachadora terminal redondo",
-            "descripcion":"Remachadora terminal redonda marca Allein Tools",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Remachadora%20Redondo.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Remachadora terminal jumper",
-            "descripcion":"Remachadora terminal Jumper marca Qilbaok",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Remachadora%20Jumper.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Multimetro de banco",
-            "descripcion":"Multimetro de banco marca:Siglent",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Multimetro%20de%20banco.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Osciloscopio",
-            "descripcion":"Osciloscopio marca:Siglent",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Osiloscopio.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Fuente de poder",
-            "descripcion":"Fuente de poder marca:Siglent",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Fuente%20de%20poder.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Martillo",
-            "descripcion":"No hay marca",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Martillo.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Etiquetadora",
-            "descripcion":"Etiquetadora marca:Brady",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Etiquitadora.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Pistola de calor",
-            "descripcion":"Pistola de carlor marca:Quick",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Pistola%20de%20calor.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Cortadora Laser",
-            "descripcion":"Cortadora laser marca:AtoMSTACK",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Cortadora%20Laser.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Estación de soldadura",
-            "descripcion":"Estacion de Soldar marca:Weller",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Estacion%20de%20soldar.jpeg?raw=true"
-         }
-      ],
-      "Consumibles":[
-         {
-            "cantidad":11,
-            "nombre":"Caja Plusivo",
-            "descripcion":"Caja Plusivo marca: Fermery",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Caja%20Plusivo.jpeg?raw=true"
-         },
-         {
-            "cantidad":2,
-            "nombre":"Kit Molex JST-XH",
-            "descripcion":"Kit Molex generica",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20Molex%20Generico.jpeg?raw=true"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Kit Soporte metálico",
-            "descripcion":"No disponible",
-            "imagen_url":""
-         },
-         {
-            "cantidad":2,
-            "nombre":"Rollos cables calibre 14 AWG",
-            "descripcion":"Rollos de cables marca: Apo sound",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Rollos%20cables%20calibre%2014.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Kit de soldadura",
-            "descripcion":"Kit de soldadura marca: Weller",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20de%20soldadura.Jpeg?raw=true"
-         },
-         {
-            "cantidad":4,
-            "nombre":"Caja IOT",
-            "descripcion":"Caja IOT marca: polycase",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Caja%20Iot.jpeg?raw=true"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Caja de optoacopladores",
-            "descripcion":"No disponible",
-            "imagen_url":""
-         },
-         {
-            "cantidad":0,
-            "nombre":"Caja de sensores de foto",
-            "descripcion":"No disponible",
-            "imagen_url":""
-         },
-         {
-            "cantidad":1,
-            "nombre":"Caja de tornillos",
-            "descripcion":"Caja de tornillos genericos",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Caja%20de%20tornillos.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Programador",
-            "descripcion":"No disponible",
-            "imagen_url":""
-         },
-         {
-            "cantidad":2,
-            "nombre":"Cinta doble faz",
-            "descripcion":"Cinta doble faz marca: Schneider",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Rollo%20doble%20faz.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Caja de termoencogibles",
-            "descripcion":"Caja de termocojibles marca:Eventronic",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Termoencogibles.jpeg?raw=true"
-         },
-         {
-            "cantidad":2,
-            "nombre":"WD-40",
-            "descripcion":"WD-40",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Wd-40.jpeg?raw=true"
-         },
-         {
-            "cantidad":2,
-            "nombre":"Spray color blanco",
-            "descripcion":"Spray blanco marca: unidas",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Spay%20blanco.jpeg?raw=true"
-         }
-      ],
-      "Clean access":[
-         {
-            "cantidad":6,
-            "nombre":"Raspberry pi y zero",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":3,
-            "nombre":"Fuente de 12V a 2A",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":3,
-            "nombre":"Adaptador USB - Bornera",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":1,
-            "nombre":"Adaptador: Redondo - Bornera",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":3,
-            "nombre":"Borneras eléctricas",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":1,
-            "nombre":"Kit de soportes Metálicos",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":7,
-            "nombre":"Borneras de click de 1 a 2 doble",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":1,
-            "nombre":"Caja de soportes metálicos",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":2,
-            "nombre":"Cable micro HDMI a HDMI",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":1,
-            "nombre":" 36 pcs Wago  connector pcs",
-            "imagen_url":""
-         },
-         {
-            "cantidad":2,
-            "nombre":"Placas Optoacopldores 12V a 3.3V",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Pegatanque Usado",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Pantalla 7\" Touch Screen Mal estado pasa esto a json",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Katuk Cobranza":[
-         {
-            "cantidad":1,
-            "nombre":"Nayax",
-            "descripcion":"Dispositivo para recibir pago con tarjeta",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Nayax.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Kit cables MDB",
-            "descripcion":"Genericos",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20de%20calbles%20MDB.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Tarjeta electrónica MDB",
-            "descripcion":"Placa",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Placa%20mdb.jpeg?raw=true"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Fuente de 24V V 1.25A",
-            "descripcion":"Fuente de 24v marca:ideal Power",
-            "imagen_url":"https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Fuente%20de%2024v.jpeg?raw=true"
-         }
-      ],
-      "Katuk Granel":[
-         {
-            "cantidad":1,
-            "nombre":"Driver Fuyu",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf",
-            "imagen_url":""
-         },
-         {
-            "cantidad":1,
-            "nombre":"Arduino nano IOT",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Shield Arduino nano",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Tronillos sin fin",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":5,
-            "nombre":"Acoples de eje",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Katuk Control":[
-         {
-            "cantidad":1,
-            "nombre":"Realy de 16 canales",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"IO Expander"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Kit adaptadores IO Expander",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":2,
-            "nombre":"Placas de optoacopladores",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":6,
-            "nombre":"Cable Jumper",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Katuk Organizadores":[
-         {
-            "cantidad":0,
-            "nombre":"Shield Expando Arduino Mega",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":23,
-            "nombre":"Soportes PCB riel din para placas",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Cables USBA a Jumper",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Red":[
-         {
-            "cantidad":1,
-            "nombre":"Router",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Switch",
-            "observacion":"Sin fuente",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Computación":[
-         {
-            "cantidad":1,
-            "nombre":"Teclados",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Mouses"
-         },
-         {
-            "cantidad":2,
-            "nombre":"Micrófonos"
-         }
-      ],
-      "Sensores":[
-         {
-            "cantidad":0,
-            "nombre":"Sensor de distancia",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de frecuencia de luz",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de humedad",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de luz",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de posición",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de presión",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de proximidad",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de sonido",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de temperatura",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor de velocidad",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor magnético",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Sensor óptico",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Actuadores":[
-         {
-            "cantidad":0,
-            "nombre":"Actuador de imanes permanentes",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Actuador de reluctancia variable",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Actuador híbrido",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Relay de 1 canal",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Relay de 2 canales",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Relay de 4 canales",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Relay de 16 canales",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":2,
-            "nombre":"Motor nema 17",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Motor nema 23",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Motor nema 34",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Actuador lineal",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Fuentes de poder":[
-         {
-            "cantidad":0,
-            "nombre":"Fuente de 5V 1A",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Fuente de 5V 2A",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Fuente de 5V 3A",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Fuente de 9V 1A",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Fuente de 12V 1A",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Fuente de 12V 2A",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Fuente de 24V 20A",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Fuente genérica",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Diseño":[
-         {
-            "cantidad":0,
-            "nombre":"Impresora 3D",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Sistemas embebidos":[
-         {
-            "cantidad":0,
-            "nombre":"Arduino uno",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Arduino Mega",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Arduino Nano",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Arduino Pro Mini",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Arduino Nano esp32",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Raspberry PI Zero",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Raspberry PI 4 MODEL B",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Nvidia Jetson",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Pantallas":[
-         {
-            "cantidad":0,
-            "nombre":"Pantalla touch safe entry",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Pantalla 7\" Touch Screen",
-            "observacion":"Mal estado",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Pantalla LCD 16X2",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":1,
-            "nombre":"Pantalla OLED",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Cámaras":[
-         {
-            "cantidad":0,
-            "nombre":"Cámara PTZ",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Cámara bala",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Cámara raspberry",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Cámara Arducan",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ],
-      "Estuches plásticos":[
-         {
-            "cantidad":0,
-            "nombre":"Policase",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Policase pequeños",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Policase medianos",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Policase grandes",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         },
-         {
-            "cantidad":0,
-            "nombre":"Caja genérica",
-            "observacion":"Diferentes tamaños",
-            "descripcion":"dfdfffdfdfdfdfdfdfdfdf"
-         }
-      ]
-   }
+    "categorias": {
+        "Herramientas": [
+            {
+                "cantidad": 1,
+                "nombre": "Taladro",
+                "descripcion": "Taladro Percutor de 550W marca: Black Decker",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Taladro.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Pulpo de soldar",
+                "descripcion": "Soporte de soldadura con base de metal con recubrimiento en polvo",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Pulpo%20de%20Soldar.jpeg?raw=true"
+            },
+            {
+                "cantidad": 8,
+                "nombre": "Llaves mec\u00c3\u00a1nicas diferentes",
+                "descripcion": "LLaves mec\u00c3\u00a1nicas marca tactix de diferentes tama\u00c3\u00b1os",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Llaves%20mecanicas.jpeg?raw=true"
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Pistola de silicona",
+                "descripcion": "Pistola de silicona marca Celina",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/pistola%20de%20silicon.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Dremel",
+                "descripcion": "Motor de alto rendimiento de 1.2 amperios",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Dremel.jpeg?raw=true"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Kit de adaptadores Dremel",
+                "descripcion": "No disponible",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Kit llaves allen",
+                "descripcion": "Kit de 13 llves",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20llaves%20Allen.jpeg?raw=true"
+            },
+            {
+                "cantidad": 4,
+                "nombre": "Desarmadores estrellas",
+                "descripcion": "Kit de Desarmadores marca: Stanley",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Desarmadores%20Estrellas.jpeg?raw=true"
+            },
+            {
+                "cantidad": 7,
+                "nombre": "Desarmadores plano",
+                "descripcion": "Kit de 7 Desarmadores planos marca: Stanley",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Desarmadores%20planos.jpeg?raw=true"
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Kit de brocas",
+                "descripcion": "Kit de Brocas marcas:HotDeal",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20de%20Brocas.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Pela cable",
+                "descripcion": "Pela cable marca WGGE",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Pela%20cable%20WGGE.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Corta cable",
+                "descripcion": "No disponible",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Remachadora%20Redondo.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Remachadora terminal redondo",
+                "descripcion": "Remachadora terminal redonda marca Allein Tools",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Remachadora%20Redondo.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Remachadora terminal jumper",
+                "descripcion": "Remachadora terminal Jumper marca Qilbaok",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Remachadora%20Jumper.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Multimetro de banco",
+                "descripcion": "Multimetro de banco marca:Siglent",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Multimetro%20de%20banco.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Osciloscopio",
+                "descripcion": "Osciloscopio marca:Siglent",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Osiloscopio.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Fuente de poder",
+                "descripcion": "Fuente de poder marca:Siglent",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Fuente%20de%20poder.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Martillo",
+                "descripcion": "No hay marca",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Martillo.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Etiquetadora",
+                "descripcion": "Etiquetadora marca:Brady",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Etiquitadora.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Pistola de calor",
+                "descripcion": "Pistola de carlor marca:Quick",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Pistola%20de%20calor.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Cortadora Laser",
+                "descripcion": "Cortadora laser marca:AtoMSTACK",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Cortadora%20Laser.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Estaci\u00c3\u00b3n de soldadura",
+                "descripcion": "Estacion de Soldar marca:Weller",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Estacion%20de%20soldar.jpeg?raw=true"
+            }
+        ],
+        "Consumibles": [
+            {
+                "cantidad": 11,
+                "nombre": "Caja Plusivo",
+                "descripcion": "Caja Plusivo marca: Fermery",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Caja%20Plusivo.jpeg?raw=true"
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Kit Molex JST-XH",
+                "descripcion": "Kit Molex generica",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20Molex%20Generico.jpeg?raw=true"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Kit Soporte met\u00c3\u00a1lico",
+                "descripcion": "No disponible",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Rollos cables calibre 14 AWG",
+                "descripcion": "Rollos de cables marca: Apo sound",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Rollos%20cables%20calibre%2014.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Kit de soldadura",
+                "descripcion": "Kit de soldadura marca: Weller",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20de%20soldadura.Jpeg?raw=true"
+            },
+            {
+                "cantidad": 4,
+                "nombre": "Caja IOT",
+                "descripcion": "Caja IOT marca: polycase",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Caja%20Iot.jpeg?raw=true"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Caja de optoacopladores",
+                "descripcion": "No disponible",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Caja de sensores de foto",
+                "descripcion": "No disponible",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Caja de tornillos",
+                "descripcion": "Caja de tornillos genericos",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Caja%20de%20tornillos.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Programador",
+                "descripcion": "No disponible",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Cinta doble faz",
+                "descripcion": "Cinta doble faz marca: Schneider",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Rollo%20doble%20faz.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Caja de termoencogibles",
+                "descripcion": "Caja de termocojibles marca:Eventronic",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Termoencogibles.jpeg?raw=true"
+            },
+            {
+                "cantidad": 2,
+                "nombre": "WD-40",
+                "descripcion": "WD-40",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Wd-40.jpeg?raw=true"
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Spray color blanco",
+                "descripcion": "Spray blanco marca: unidas",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Spay%20blanco.jpeg?raw=true"
+            }
+        ],
+        "Clean access": [
+            {
+                "cantidad": 6,
+                "nombre": "Raspberry pi y zero",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 3,
+                "nombre": "Fuente de 12V a 2A",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 3,
+                "nombre": "Adaptador USB - Bornera",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Adaptador: Redondo - Bornera",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 3,
+                "nombre": "Borneras el\u00c3\u00a9ctricas",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Kit de soportes Met\u00c3\u00a1licos",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 7,
+                "nombre": "Borneras de click de 1 a 2 doble",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Caja de soportes met\u00c3\u00a1licos",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Cable micro HDMI a HDMI",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 1,
+                "nombre": " 36 pcs Wago  connector pcs",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Placas Optoacopldores 12V a 3.3V",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Pegatanque Usado",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Pantalla 7\" Touch Screen Mal estado pasa esto a json",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Katuk Cobranza": [
+            {
+                "cantidad": 1,
+                "nombre": "Nayax",
+                "descripcion": "Dispositivo para recibir pago con tarjeta",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Nayax.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Kit cables MDB",
+                "descripcion": "Genericos",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Kit%20de%20calbles%20MDB.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Tarjeta electr\u00c3\u00b3nica MDB",
+                "descripcion": "Placa",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Placa%20mdb.jpeg?raw=true"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Fuente de 24V V 1.25A",
+                "descripcion": "Fuente de 24v marca:ideal Power",
+                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Fuente%20de%2024v.jpeg?raw=true"
+            }
+        ],
+        "Katuk Granel": [
+            {
+                "cantidad": 1,
+                "nombre": "Driver Fuyu",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf",
+                "imagen_url": ""
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Arduino nano IOT",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Shield Arduino nano",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Tronillos sin fin",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 5,
+                "nombre": "Acoples de eje",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Katuk Control": [
+            {
+                "cantidad": 1,
+                "nombre": "Realy de 16 canales",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "IO Expander"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Kit adaptadores IO Expander",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Placas de optoacopladores",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 6,
+                "nombre": "Cable Jumper",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Katuk Organizadores": [
+            {
+                "cantidad": 0,
+                "nombre": "Shield Expando Arduino Mega",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 23,
+                "nombre": "Soportes PCB riel din para placas",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Cables USBA a Jumper",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Red": [
+            {
+                "cantidad": 1,
+                "nombre": "Router",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Switch",
+                "observacion": "Sin fuente",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Computaci\u00c3\u00b3n": [
+            {
+                "cantidad": 1,
+                "nombre": "Teclados",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Mouses"
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Micr\u00c3\u00b3fonos"
+            }
+        ],
+        "Sensores": [
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de distancia",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de frecuencia de luz",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de humedad",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de luz",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de posici\u00c3\u00b3n",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de presi\u00c3\u00b3n",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de proximidad",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de sonido",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de temperatura",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor de velocidad",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor magn\u00c3\u00a9tico",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Sensor \u00c3\u00b3ptico",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Actuadores": [
+            {
+                "cantidad": 0,
+                "nombre": "Actuador de imanes permanentes",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Actuador de reluctancia variable",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Actuador h\u00c3\u00adbrido",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Relay de 1 canal",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Relay de 2 canales",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Relay de 4 canales",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Relay de 16 canales",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 2,
+                "nombre": "Motor nema 17",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Motor nema 23",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Motor nema 34",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Actuador lineal",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Fuentes de poder": [
+            {
+                "cantidad": 0,
+                "nombre": "Fuente de 5V 1A",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Fuente de 5V 2A",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Fuente de 5V 3A",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Fuente de 9V 1A",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Fuente de 12V 1A",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Fuente de 12V 2A",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Fuente de 24V 20A",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Fuente gen\u00c3\u00a9rica",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Dise\u00c3\u00b1o": [
+            {
+                "cantidad": 0,
+                "nombre": "Impresora 3D",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Sistemas embebidos": [
+            {
+                "cantidad": 0,
+                "nombre": "Arduino uno",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Arduino Mega",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Arduino Nano",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Arduino Pro Mini",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Arduino Nano esp32",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Raspberry PI Zero",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Raspberry PI 4 MODEL B",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Nvidia Jetson",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Pantallas": [
+            {
+                "cantidad": 0,
+                "nombre": "Pantalla touch safe entry",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Pantalla 7\" Touch Screen",
+                "observacion": "Mal estado",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Pantalla LCD 16X2",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 1,
+                "nombre": "Pantalla OLED",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "C\u00c3\u00a1maras": [
+            {
+                "cantidad": 0,
+                "nombre": "C\u00c3\u00a1mara PTZ",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "C\u00c3\u00a1mara bala",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "C\u00c3\u00a1mara raspberry",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "C\u00c3\u00a1mara Arducan",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Estuches pl\u00c3\u00a1sticos": [
+            {
+                "cantidad": 0,
+                "nombre": "Policase",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Policase peque\u00c3\u00b1os",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Policase medianos",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Policase grandes",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            },
+            {
+                "cantidad": 0,
+                "nombre": "Caja gen\u00c3\u00a9rica",
+                "observacion": "Diferentes tama\u00c3\u00b1os",
+                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+            }
+        ],
+        "Brayan verga": []
+    }
 }
