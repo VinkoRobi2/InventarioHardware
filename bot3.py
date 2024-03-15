@@ -97,9 +97,6 @@ def enviar_items(call, categoria):
         button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
         keyboard.add(button_salir)
         bot.send_message(call.message.chat.id, f"Items para la categoría {categoria}:", reply_markup=keyboard)
-    else:
-        bot.send_message(call.message.chat.id, f"No hay items para la categoría {categoria}")
-
 
 
 def mostrar_descripcion(call, item_nombre):
@@ -246,7 +243,12 @@ def BotonesCategoria(call):
 
 
 
-
+@bot.callback_query_handler(func=lambda call: True)
+def handle_button_click(call):
+    if call.data == 'Clean access':
+        print("Se hizo clic en el botón 'Clean access'")
+    else:
+        print("Se hizo clic en el botón:", call.data)
 
 
 
