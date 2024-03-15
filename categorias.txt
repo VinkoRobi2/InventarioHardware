@@ -71,7 +71,7 @@
                 "cantidad": 1,
                 "nombre": "Corta cable",
                 "descripcion": "No disponible",
-                "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Remachadora%20Redondo.jpeg?raw=true"
+                "imagen_url": ""
             },
             {
                 "cantidad": 1,
@@ -132,6 +132,12 @@
                 "nombre": "Estaci\u00c3\u00b3n de soldadura",
                 "descripcion": "Estacion de Soldar marca:Weller",
                 "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Estacion%20de%20soldar.jpeg?raw=true"
+            },
+            {
+                "nombre": "Brayan",
+                "cantidad": "1",
+                "descripcion": "Nada",
+                "imagen_url": "https://api.telegram.org/file/bot6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og/photos/file_1.jpg"
             }
         ],
         "Consumibles": [
@@ -703,7 +709,6 @@
                 "observacion": "Diferentes tama\u00c3\u00b1os",
                 "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
             }
-        ],
-        "Brayan verga": []
+        ]
     }
 }
