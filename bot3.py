@@ -7,8 +7,9 @@ Telegram_Api = '6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og'
 bot = telebot.TeleBot(Telegram_Api)
 bot_activado = True
 ContrasenaG = 1012020
-path = 'usuarios.txt'
-pathC = 'C:\\Users\\rnavas\\Desktop\\python\\categorias.txt'
+path = 'InventarioHardware\\usuarios.txt'
+pathC = pathC = 'InventarioHardware\\categorias.txt'
+
 
 
 
@@ -49,8 +50,13 @@ def handle_button_click(call):
     elif call.data == 'VerLista':
         BotonesCategoria(call)
     elif call.data in categorias: 
-        enviar_items(call, call.data) 
-
+        enviar_items(call, call.data)
+    elif call.data == "AgregarItem":
+        mostrar_categorias_para_agregar_item(call)
+    elif call.data.startswith('seleccion_categoria_'):
+        mostrar_items_categoria(call)
+    elif call.data.startswith('agregar_nuevo_'):
+        solicitar_info_nuevo_item(call)
 
 
 
@@ -120,8 +126,8 @@ def mostrar_descripcion(call, item_nombre):
 
 
 ##########################################################################################
-# Mostrar Categorías para Agregar Ítem
-@bot.callback_query_handler(func=lambda call: call.data == 'AgregarItem')
+
+
 def mostrar_categorias_para_agregar_item(call):
     keyboard = InlineKeyboardMarkup(row_width=2)
     categorias = cargar_categorias()
@@ -130,8 +136,7 @@ def mostrar_categorias_para_agregar_item(call):
         keyboard.add(button)
     bot.send_message(call.message.chat.id, "Selecciona la categoría para agregar un ítem:", reply_markup=keyboard)
 
-# Mostrar Ítems de la Categoría Seleccionada
-@bot.callback_query_handler(func=lambda call: call.data.startswith('seleccion_categoria_'))
+
 def mostrar_items_categoria(call):
     categoria = call.data.split('seleccion_categoria_')[1]
     items = obtener_items_por_categoria(categoria)
@@ -143,8 +148,7 @@ def mostrar_items_categoria(call):
     keyboard.add(boton_agregar_nuevo)
     bot.send_message(call.message.chat.id, f"Ítems en {categoria}:", reply_markup=keyboard)
 
-# Iniciar Proceso para Agregar Nuevo Ítem
-@bot.callback_query_handler(func=lambda call: call.data.startswith('agregar_nuevo_'))
+
 def solicitar_info_nuevo_item(call):
     categoria = call.data.split('agregar_nuevo_')[1]
     msg = bot.send_message(call.message.chat.id, "Ingresa el nombre del nuevo ítem:")
@@ -169,15 +173,39 @@ def obtener_descripcion_nuevo_item(message, nombre, cantidad, categoria):
     bot.register_next_step_handler(msg, guardar_nuevo_item, nombre, cantidad, descripcion, categoria)
 
 # Guardar Nuevo Ítem (implementación simplificada, adaptar según tu lógica de guardado)
+
 def guardar_nuevo_item(message, nombre, cantidad, descripcion, categoria):
-    # Omitimos la implementación detallada de guardar el ítem, incluyendo la carga de la foto.
-    # Asegúrate de adaptar esta parte a tus necesidades específicas.
-    if message.content_type == 'photo' or message.text.lower() == 'saltar':
-        # Aquí iría la lógica para guardar el ítem en tu base de datos o archivo.
-        bot.send_message(message.chat.id, f"Nuevo ítem '{nombre}' agregado a la categoría '{categoria}'.")
+    if message.content_type == 'photo':
+        file_info = bot.get_file(message.photo[-1].file_id)
+        file_path = f'https://api.telegram.org/file/bot{Telegram_Api}/{file_info.file_path}'  
+    elif message.text.lower() == 'saltar':
+        file_path = None  
     else:
-        bot.send_message(message.chat.id, "Por favor, envía una foto válida.")
-        # Aquí podrías volver a solicitar la foto o finalizar el proceso.
+        bot.send_message(message.chat.id, "Por favor, envía una foto válida o escribe 'saltar'.")
+        return
+    
+    try:
+        with open(pathC, 'r+') as file:
+            data = json.load(file)
+            if categoria not in data['categorias']:
+                data['categorias'][categoria] = []
+            
+            nuevo_item = {
+                "nombre": nombre,
+                "cantidad": cantidad,
+                "descripcion": descripcion,
+                "imagen_url": file_path
+            }
+            data['categorias'][categoria].append(nuevo_item)
+            
+            file.seek(0)
+            json.dump(data, file, indent=4)
+            
+        bot.send_message(message.chat.id, f"Nuevo ítem '{nombre}' agregado correctamente a la categoría '{categoria}'.")
+    except Exception as e:
+        print(e)
+        bot.send_message(message.chat.id, "Ocurrió un error al guardar el ítem.")
+
 
 
 ################################################################################################
