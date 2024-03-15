@@ -51,9 +51,20 @@ def handle_button_click(call):
     elif call.data in categorias: 
         enviar_items(call, call.data) 
     elif call.data == 'AgregarItem':
-        agregar_nuevo_item(call)
-    elif call.data == 'elegir_categoria_':
-        elegir_categoria(call)
+        mostrar_categorias_para_agregar_item(call)
+    elif call.data.startswith('seleccion_categoria_'):
+        mostrar_items_categoria(call)
+    elif call.data.startswith('agregar_nuevo_'):
+        solicitar_info_nuevo_item(call)
+    elif call.data == 'EliminarItem':
+        mostrar_categorias_para_eliminar_item(call)
+    elif call.data.startswith('eliminar_categoria_'):
+        mostrar_items_para_eliminar(call)
+    elif call.data.startswith('eliminar_item_'):
+        confirmar_eliminar_item(call)
+    elif call.data.startswith('confirmar_eliminar_'):
+        eliminar_item(call)
+
 
 
 
@@ -94,9 +105,7 @@ def enviar_items(call, categoria):
         button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
         keyboard.add(button_salir)
         bot.send_message(call.message.chat.id, f"Items para la categoría {categoria}:", reply_markup=keyboard)
-    else:
-        bot.send_message(call.message.chat.id, f"No hay items para la categoría {categoria}")
-
+  
 
 
 def mostrar_descripcion(call, item_nombre):
@@ -122,89 +131,151 @@ def mostrar_descripcion(call, item_nombre):
         bot.send_message(call.message.chat.id, f"No se encontró la descripción para {item_nombre}")
 
 
-##########################################################################################
-def mostrar_botones_categorias_para_nuevo_item(call):
-    keyboard = construir_botones_categorias_para_nuevo_item()
-    bot.send_message(call.message.chat.id, "Por favor elige la categoría a la que deseas agregar el nuevo ítem:", reply_markup=keyboard)
 
-def construir_botones_categorias_para_nuevo_item():
-    keyboard = types.InlineKeyboardMarkup(row_width=2)
-    for categoria in categorias.keys():
-        button = types.InlineKeyboardButton(text=categoria, callback_data=f'elegir_categoria_{categoria}')
+
+#######################################################################################3#
+
+def mostrar_categorias_para_eliminar_item(call):
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    categorias = cargar_categorias()
+    for categoria in categorias:
+        button = InlineKeyboardButton(text=categoria, callback_data=f"eliminar_categoria_{categoria}")
         keyboard.add(button)
-    return keyboard
+    bot.send_message(call.message.chat.id, "Selecciona la categoría del ítem a eliminar:", reply_markup=keyboard)
 
 
-def agregar_nuevo_item(call):
-    mostrar_botones_categorias_para_nuevo_item(call)
+def mostrar_items_para_eliminar(call):
+    categoria = call.data.split('eliminar_categoria_')[1]
+    items = obtener_items_por_categoria(categoria)
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    for item in items:
+        boton_item = InlineKeyboardButton(text=item['nombre'], callback_data=f"eliminar_item_{categoria}_{item['nombre']}")
+        keyboard.add(boton_item)
+    bot.send_message(call.message.chat.id, "Selecciona el ítem a eliminar:", reply_markup=keyboard)
 
 
-def elegir_categoria(call):
-    categoria = call.data.split('_')[1]
-    print("Categoría seleccionada:", categoria)  # Agregar esta línea para imprimir la categoría seleccionada
-    bot.send_message(call.message.chat.id, f"Perfecto, ahora ingresa el nombre del nuevo ítem en la categoría {categoria}:")
-    bot.register_next_step_handler(call.message, lambda message: obtener_datos_nuevo_item(message, categoria))
+def confirmar_eliminar_item(call):
+   _ , categoria, nombre_item = call.data.split('_', 2)
+   item = obtener_item_por_nombre(nombre_item, categoria)
+   if item:
+        markup = InlineKeyboardMarkup()
+        boton_confirmar = InlineKeyboardButton("Sí, eliminar", callback_data=f"confirmar_eliminar_{categoria}_{nombre_item}")
+        markup.add(boton_confirmar)
+        bot.send_photo(call.message.chat.id, item['imagen_url'], caption=f"Cantidad: {item['cantidad']}\n¿Deseas eliminar este ítem de la categoría {categoria}?", reply_markup=markup)
+   else:
+        bot.send_message(call.message.chat.id, "Ítem no encontrado.")
+
+
+def eliminar_item(call):
+    _ , categoria, nombre_item = call.data.split('_', 2)
+    try:
+        with open(pathC, 'r+') as file:
+            data = json.load(file)
+            items = data['categorias'][categoria]
+            # Filtrar el ítem para mantener todos excepto el que coincida con nombre_item
+            items = [item for item in items if item['nombre'] != nombre_item]
+            data['categorias'][categoria] = items
+            file.seek(0)
+            file.truncate()
+            json.dump(data, file, indent=4)
+        bot.send_message(call.message.chat.id, f"Ítem '{nombre_item}' eliminado correctamente de la categoría {categoria}.")
+    except Exception as e:
+        print(e)
+        bot.send_message(call.message.chat.id, "Error al eliminar el ítem.")
 
 
 
-def obtener_datos_nuevo_item(message, categoria):
+##########################################################################################
+
+
+def mostrar_categorias_para_agregar_item(call):
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    categorias = cargar_categorias()
+    for categoria in categorias:
+        button = InlineKeyboardButton(text=categoria, callback_data=f"seleccion_categoria_{categoria}")
+        keyboard.add(button)
+    bot.send_message(call.message.chat.id, "Selecciona la categoría para agregar un ítem:", reply_markup=keyboard)
+
+def mostrar_items_categoria(call):
+    categoria = call.data.split('seleccion_categoria_')[1]
+    items = obtener_items_por_categoria(categoria)
+    keyboard = InlineKeyboardMarkup(row_width=2)
+    for item in items:
+        boton_item = InlineKeyboardButton(text=item['nombre'], callback_data=f"item_{item['nombre']}")
+        keyboard.add(boton_item)
+    boton_agregar_nuevo = InlineKeyboardButton("Agregar nuevo ítem", callback_data=f"agregar_nuevo_{categoria}")
+    keyboard.add(boton_agregar_nuevo)
+    bot.send_message(call.message.chat.id, f"Ítems en {categoria}:", reply_markup=keyboard)
+
+
+
+def solicitar_info_nuevo_item(call):
+    categoria = call.data.split('agregar_nuevo_')[1]
+    msg = bot.send_message(call.message.chat.id, "Ingresa el nombre del nuevo ítem:")
+    bot.register_next_step_handler(msg, obtener_nombre_nuevo_item, categoria)
+
+
+def obtener_nombre_nuevo_item(message, categoria):
     nombre = message.text
-    bot.send_message(message.chat.id, "Por favor ingresa la cantidad del nuevo ítem:")
-    bot.register_next_step_handler(message, lambda message: obtener_cantidad_nuevo_item(message, nombre, categoria))
+    msg = bot.send_message(message.chat.id, "Ingresa la cantidad del nuevo ítem:")
+    bot.register_next_step_handler(msg, obtener_cantidad_nuevo_item, nombre, categoria)
+
 
 def obtener_cantidad_nuevo_item(message, nombre, categoria):
     cantidad = message.text
-    bot.send_message(message.chat.id, "Por favor ingresa la descripción del nuevo ítem:")
-    bot.register_next_step_handler(message, lambda message: obtener_descripcion_nuevo_item(message, nombre, cantidad, categoria))
+    msg = bot.send_message(message.chat.id, "Ingresa la descripción del nuevo ítem:")
+    bot.register_next_step_handler(msg, obtener_descripcion_nuevo_item, nombre, cantidad, categoria)
+
 
 def obtener_descripcion_nuevo_item(message, nombre, cantidad, categoria):
     descripcion = message.text
-    bot.send_message(message.chat.id, "Por favor envía una foto del nuevo ítem:")
-    bot.register_next_step_handler(message, lambda message: guardar_nuevo_item(message, nombre, cantidad, descripcion, categoria))
+    msg = bot.send_message(message.chat.id, "Envía una foto del nuevo ítem o escribe 'saltar' para omitir:")
+    bot.register_next_step_handler(msg, guardar_nuevo_item, nombre, cantidad, descripcion, categoria)
+
 
 def guardar_nuevo_item(message, nombre, cantidad, descripcion, categoria):
     if message.content_type == 'photo':
-        file_id = message.photo[-1].file_id
-        file_info = bot.get_file(file_id)
-        downloaded_file = bot.download_file(file_info.file_path)
-
+        file_info = bot.get_file(message.photo[-1].file_id)
+        file_path = f'https://api.telegram.org/file/bot{Telegram_Api}/{file_info.file_path}'  
+    elif message.text.lower() == 'saltar':
+        file_path = None  
+    else:
+        bot.send_message(message.chat.id, "Por favor, envía una foto válida o escribe 'saltar'.")
+        return
+    
+    try:
         with open(pathC, 'r+') as file:
             data = json.load(file)
-            items = data.get('categorias', {})
-            if categoria not in items:
-                items[categoria] = []
-
+            if categoria not in data['categorias']:
+                data['categorias'][categoria] = []
+            
             nuevo_item = {
-                "cantidad": cantidad,
                 "nombre": nombre,
+                "cantidad": cantidad,
                 "descripcion": descripcion,
-                "imagen_url": file_info.file_path  # Guardamos la URL del archivo en lugar del archivo en sí
+                "imagen_url": file_path
             }
-            items[categoria].append(nuevo_item)
+            data['categorias'][categoria].append(nuevo_item)
+            
             file.seek(0)
             json.dump(data, file, indent=4)
-        
-        bot.send_message(message.chat.id, "¡Nuevo ítem agregado exitosamente!")
-    else:
-        bot.send_message(message.chat.id, "Por favor envía una foto válida del nuevo ítem.")
-        obtener_descripcion_nuevo_item(message, nombre, cantidad, descripcion, categoria)
+            
+        bot.send_message(message.chat.id, f"Nuevo ítem '{nombre}' agregado correctamente a la categoría '{categoria}'.")
+    except Exception as e:
+        print(e)
+        bot.send_message(message.chat.id, "Ocurrió un error al guardar el ítem.")
 
 
 
 
-
-
-
-
-
-################################################################################################
-
-
-def obtener_item_por_nombre(nombre):
-    items = cargar_items()
-    for categoria, lista_items in items.get('categorias', {}).items():
-        for item in lista_items:
-            if item['nombre'] == nombre:
+def obtener_item_por_nombre(nombre_item, categoria):
+    print(f"Buscando {nombre_item} en {categoria}")  # Para depuración
+    with open(pathC, 'r') as file:
+        data = json.load(file)
+        items = data.get('categorias', {}).get(categoria, [])
+        for item in items:
+            print(f"Comparando con {item['nombre']}")  # Para depuración
+            if item['nombre'] == nombre_item:
                 return item
     return None
 
@@ -232,9 +303,6 @@ def construir_botones_categorias():
 def BotonesCategoria(call):
     keyboard = construir_botones_categorias()
     bot.send_message(call.message.chat.id, "Botones para todas las categorías:", reply_markup=keyboard)
-
-
-
 
 
 
