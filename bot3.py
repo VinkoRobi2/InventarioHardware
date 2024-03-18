@@ -1,5 +1,6 @@
 import telebot
 import requests
+import datetime
 from  telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 from telebot import types
 import json
@@ -7,8 +8,8 @@ Telegram_Api = '6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og'
 bot = telebot.TeleBot(Telegram_Api)
 bot_activado = True
 ContrasenaG = 1012020
-path = 'InventarioHardware\\usuarios.txt'
-pathC = pathC = 'InventarioHardware\\categorias.txt'
+path = 'usuarios.txt'
+pathC = pathC = 'categorias.txt'
 
 
 
@@ -57,6 +58,8 @@ def handle_button_click(call):
         mostrar_items_categoria(call)
     elif call.data.startswith('agregar_nuevo_'):
         solicitar_info_nuevo_item(call)
+    elif call.data == "Registros":
+        ver_registros(call)
 
 
 
@@ -122,8 +125,6 @@ def mostrar_descripcion(call, item_nombre):
         bot.send_message(call.message.chat.id, f"No se encontró la descripción para {item_nombre}")
 
 
-##########################################################################################
-
 
 def mostrar_categorias_para_agregar_item(call):
     keyboard = InlineKeyboardMarkup(row_width=2)
@@ -151,25 +152,25 @@ def solicitar_info_nuevo_item(call):
     msg = bot.send_message(call.message.chat.id, "Ingresa el nombre del nuevo ítem:")
     bot.register_next_step_handler(msg, obtener_nombre_nuevo_item, categoria)
 
-# Obtener Nombre del Nuevo Ítem
+
 def obtener_nombre_nuevo_item(message, categoria):
     nombre = message.text
     msg = bot.send_message(message.chat.id, "Ingresa la cantidad del nuevo ítem:")
     bot.register_next_step_handler(msg, obtener_cantidad_nuevo_item, nombre, categoria)
 
-# Obtener Cantidad del Nuevo Ítem
+
 def obtener_cantidad_nuevo_item(message, nombre, categoria):
-    cantidad = message.text  # Aquí podrías validar que la cantidad sea un número
+    cantidad = message.text  
     msg = bot.send_message(message.chat.id, "Ingresa la descripción del nuevo ítem:")
     bot.register_next_step_handler(msg, obtener_descripcion_nuevo_item, nombre, cantidad, categoria)
 
-# Obtener Descripción del Nuevo Ítem
+
 def obtener_descripcion_nuevo_item(message, nombre, cantidad, categoria):
     descripcion = message.text
     msg = bot.send_message(message.chat.id, "Envía una foto del nuevo ítem o escribe 'saltar' para omitir:")
     bot.register_next_step_handler(msg, guardar_nuevo_item, nombre, cantidad, descripcion, categoria)
 
-# Guardar Nuevo Ítem (implementación simplificada, adaptar según tu lógica de guardado)
+import datetime
 
 def guardar_nuevo_item(message, nombre, cantidad, descripcion, categoria):
     if message.content_type == 'photo':
@@ -180,13 +181,11 @@ def guardar_nuevo_item(message, nombre, cantidad, descripcion, categoria):
     else:
         bot.send_message(message.chat.id, "Por favor, envía una foto válida o escribe 'saltar'.")
         return
-    
     try:
         with open(pathC, 'r+') as file:
             data = json.load(file)
             if categoria not in data['categorias']:
                 data['categorias'][categoria] = []
-            
             nuevo_item = {
                 "nombre": nombre,
                 "cantidad": cantidad,
@@ -197,15 +196,31 @@ def guardar_nuevo_item(message, nombre, cantidad, descripcion, categoria):
             
             file.seek(0)
             json.dump(data, file, indent=4)
-            
+        with open('registro.txt', 'a') as log_file:
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            if message.from_user.username:
+                username = message.from_user.username
+            else:
+                username = f"{message.from_user.first_name} {message.from_user.last_name}"
+            log_file.write(f"[{timestamp}] Nuevo ítem '{nombre}' agregado a la categoría '{categoria}' por {username}\n")
+
         bot.send_message(message.chat.id, f"Nuevo ítem '{nombre}' agregado correctamente a la categoría '{categoria}'.")
     except Exception as e:
         print(e)
         bot.send_message(message.chat.id, "Ocurrió un error al guardar el ítem.")
 
 
+#################################################
+def ver_registros(call):
+    with open('registro.txt', 'r') as log_file:
+        registros = log_file.read()
+        bot.send_message(call.message.chat.id, "Registros:\n" + registros)
 
-################################################################################################
+################################################
+
+
+
+
 
 
 def obtener_item_por_nombre(nombre):
@@ -307,9 +322,10 @@ def Opciones(message):
     markup = InlineKeyboardMarkup(row_width=1)
     item1 = InlineKeyboardButton('Ver Inventario',callback_data='VerLista')
     item3 = InlineKeyboardButton('Agregar Item', callback_data='AgregarItem')
+    item5 = InlineKeyboardButton('Ver Registros ',callback_data="Registros")
     item4 = InlineKeyboardButton('Eliminar Item', callback_data='EliminarItem')
     item2 = InlineKeyboardButton('Salir', callback_data='Salir')
-    markup.add(item1,item3,item4,item2)
+    markup.add(item1,item3,item4,item2,item5)
     for item in usuarios:
         if item['telegram'] == message.from_user.id:
             usuario = f"{item['Nombre']} {item['Apellido']}"
