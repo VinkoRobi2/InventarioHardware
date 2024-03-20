@@ -134,10 +134,10 @@
                 "imagen_url": "https://github.com/VinkoRobi2/InventarioHardware/blob/main/Fotos/Estacion%20de%20soldar.jpeg?raw=true"
             },
             {
-                "nombre": "Brayan",
+                "nombre": "Bryan",
                 "cantidad": "1",
-                "descripcion": "Nada",
-                "imagen_url": "https://api.telegram.org/file/bot6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og/photos/file_1.jpg"
+                "descripcion": "Bryan vale verga",
+                "imagen_url": "https://api.telegram.org/file/bot6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og/photos/file_6.jpg"
             }
         ],
         "Consumibles": [
@@ -412,7 +412,7 @@
                 "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
             }
         ],
-        "Computaci\u00c3\u00b3n": [
+        "Computacion": [
             {
                 "cantidad": 1,
                 "nombre": "Teclados",
@@ -588,7 +588,7 @@
                 "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
             }
         ],
-        "Dise\u00c3\u00b1o": [
+        "Diseno": [
             {
                 "cantidad": 0,
                 "nombre": "Impresora 3D",
@@ -660,54 +660,34 @@
                 "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
             }
         ],
-        "C\u00c3\u00a1maras": [
+        "Camaras": [
             {
                 "cantidad": 0,
-                "nombre": "C\u00c3\u00a1mara PTZ",
+                "nombre": "Camara PTZ",
                 "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
             },
             {
                 "cantidad": 0,
-                "nombre": "C\u00c3\u00a1mara bala",
+                "nombre": " Camara bala",
                 "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
             },
             {
                 "cantidad": 0,
-                "nombre": "C\u00c3\u00a1mara raspberry",
+                "nombre": "Camara raspberry",
                 "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
             },
             {
                 "cantidad": 0,
-                "nombre": "C\u00c3\u00a1mara Arducan",
+                "nombre": "Camara Arducan",
                 "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
             }
         ],
-        "Estuches pl\u00c3\u00a1sticos": [
+        "Estuches plasticos": [
             {
-                "cantidad": 0,
-                "nombre": "Policase",
-                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
-            },
-            {
-                "cantidad": 0,
-                "nombre": "Policase peque\u00c3\u00b1os",
-                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
-            },
-            {
-                "cantidad": 0,
-                "nombre": "Policase medianos",
-                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
-            },
-            {
-                "cantidad": 0,
-                "nombre": "Policase grandes",
-                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
-            },
-            {
-                "cantidad": 0,
-                "nombre": "Caja gen\u00c3\u00a9rica",
-                "observacion": "Diferentes tama\u00c3\u00b1os",
-                "descripcion": "dfdfffdfdfdfdfdfdfdfdf"
+                "nombre": "El Bryan",
+                "cantidad": "1",
+                "descripcion": "Vale verga",
+                "imagen_url": "https://api.telegram.org/file/bot6888394615:AAFI3VNXrw4xtOxfxUUTlXEkTBm2I7QW3og/photos/file_7.jpg"
             }
         ]
     }
