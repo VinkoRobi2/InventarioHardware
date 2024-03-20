@@ -14,7 +14,6 @@ pathC = pathC = 'categorias.txt'
 
 
 
-
 @bot.message_handler(func=lambda message: True)
 def on_any_message(message):
     telegram_id = message.from_user.id
@@ -60,6 +59,8 @@ def handle_button_click(call):
         solicitar_info_nuevo_item(call)
     elif call.data == "Registros":
         ver_registros(call)
+
+
 
 
 
@@ -127,11 +128,22 @@ def mostrar_descripcion(call, item_nombre):
 
 
 def mostrar_categorias_para_agregar_item(call):
+    categorias_lista = list(categorias.items())
     keyboard = InlineKeyboardMarkup(row_width=2)
-    categorias = cargar_categorias()
-    for categoria in categorias:
-        button = InlineKeyboardButton(text=categoria, callback_data=f"seleccion_categoria_{categoria}")
-        keyboard.add(button)
+
+    for i in range(0, len(categorias_lista), 2):
+        categoria1 = categorias_lista[i]
+        nombre_categoria1 = categoria1[0]
+        button1 = InlineKeyboardButton(text=nombre_categoria1, callback_data=nombre_categoria1)
+
+        if i + 1 < len(categorias_lista):  
+            categoria2 = categorias_lista[i + 1]
+            nombre_categoria2 = categoria2[0]
+            button2 = InlineKeyboardButton(text=nombre_categoria2, callback_data=nombre_categoria2)
+            keyboard.add(button1, button2)
+        else:
+            keyboard.add(button1)  
+
     bot.send_message(call.message.chat.id, "Selecciona la categoría para agregar un ítem:", reply_markup=keyboard)
 
 
@@ -144,7 +156,13 @@ def mostrar_items_categoria(call):
         keyboard.add(boton_item)
     boton_agregar_nuevo = InlineKeyboardButton("Agregar nuevo ítem", callback_data=f"agregar_nuevo_{categoria}")
     keyboard.add(boton_agregar_nuevo)
-    bot.send_message(call.message.chat.id, f"Ítems en {categoria}:", reply_markup=keyboard)
+    bot.send_message(call.message.chat.id, f"Ítems en la categoria:{categoria}:", reply_markup=keyboard)
+
+#######################################################
+
+#######################################################
+
+
 
 
 def solicitar_info_nuevo_item(call):
@@ -170,7 +188,6 @@ def obtener_descripcion_nuevo_item(message, nombre, cantidad, categoria):
     msg = bot.send_message(message.chat.id, "Envía una foto del nuevo ítem o escribe 'saltar' para omitir:")
     bot.register_next_step_handler(msg, guardar_nuevo_item, nombre, cantidad, descripcion, categoria)
 
-import datetime
 
 def guardar_nuevo_item(message, nombre, cantidad, descripcion, categoria):
     if message.content_type == 'photo':
@@ -210,13 +227,11 @@ def guardar_nuevo_item(message, nombre, cantidad, descripcion, categoria):
         bot.send_message(message.chat.id, "Ocurrió un error al guardar el ítem.")
 
 
-#################################################
 def ver_registros(call):
     with open('registro.txt', 'r') as log_file:
         registros = log_file.read()
         bot.send_message(call.message.chat.id, "Registros:\n" + registros)
 
-################################################
 
 
 
@@ -251,6 +266,19 @@ def construir_botones_categorias():
         keyboard.add(*buttons)
     
     return keyboard
+
+####################################################
+
+####################################################
+
+
+
+
+
+
+
+
+
 
 def BotonesCategoria(call):
     keyboard = construir_botones_categorias()
