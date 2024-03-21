@@ -9,7 +9,7 @@ bot = telebot.TeleBot(Telegram_Api)
 bot_activado = True
 ContrasenaG = 1012020
 path = 'usuarios.txt'
-pathC = pathC = 'categorias.txt'
+pathC = 'categorias.txt'
 
 
 
@@ -23,7 +23,7 @@ def on_any_message(message):
         global bot_activado
         if bot_activado:
             markup = InlineKeyboardMarkup(row_width=2)
-            item1 = InlineKeyboardButton('Si, deseo crear una cuenta', callback_data='Si1')
+            item1 = InlineKeyboardButton('Si, deseo crear una.', callback_data='Si1')
             item2 = InlineKeyboardButton("No en este momento", callback_data="later")
             markup.add(item1, item2)
             bot.reply_to(message, '¡Hola! Soy InventarioHardware, tu bot para conocer el inventario. ¿Deseas crear una cuenta?', reply_markup=markup)
@@ -34,15 +34,16 @@ def on_any_message(message):
     
 @bot.callback_query_handler(func=lambda call: True)
 def handle_button_click(call):
-    if call.data == 'Si1':
-        bot.send_message(call.message.chat.id, "Por favor ingresa tu Nombre:")
-        bot.register_next_step_handler(call.message, guardar_nombre)
+    if call.data == 'Clean access':
+        print("Se hizo clic en el botón 'Clean access'")
+    elif call.data == "Registros":
+        ver_registros(call)
     elif call.data.startswith('verificar_item_'):
         item_nombre = call.data[len('verificar_item_'):]
         mostrar_descripcion(call, item_nombre)
     elif call.data == 'later':
         Regresar(call.message)
-    if call.data.startswith('verificar_'):
+    elif call.data.startswith('verificar_'):
         categoria = call.data.split('_')[1]
         enviar_items(call, categoria)
     elif call.data == 'Salir':
@@ -53,13 +54,19 @@ def handle_button_click(call):
         enviar_items(call, call.data)
     elif call.data == "AgregarItem":
         mostrar_categorias_para_agregar_item(call)
+    elif call.data == "Volver":
+        Opciones(call.message)
     elif call.data.startswith('seleccion_categoria_'):
         mostrar_items_categoria(call)
+        
+    elif call.data.startswith("categoria_"):  # Suponiendo que tus categorías tienen un prefijo así
+        categoria_seleccionada = call.data.split("_")[1]
+        enviar_items(call, categoria_seleccionada, mostrar_boton_agregar=True)
+
     elif call.data.startswith('agregar_nuevo_'):
         solicitar_info_nuevo_item(call)
-    elif call.data == "Registros":
-        ver_registros(call)
-
+    else:
+        print("Se hizo clic en el botón:", call.data)
 
 
 
@@ -87,27 +94,26 @@ def obtener_items_por_categoria(categoria):
     categorias = items.get('categorias', {})
     return categorias.get(categoria, [])
 
-
-
-def enviar_items(call, categoria):
+def enviar_items(call, categoria, mostrar_boton_agregar=False):
     items = obtener_items_por_categoria(categoria)
-    if items:
-        keyboard = types.InlineKeyboardMarkup(row_width=2)
-        for item in items:
-            texto_boton = f"{item['nombre']} - Cantidad: {item['cantidad']}"
-            callback_data = f"verificar_item_{item['nombre']}"
-            button = types.InlineKeyboardButton(text=texto_boton, callback_data=callback_data)
-            keyboard.add(button)
-        button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
-        keyboard.add(button_salir)
-        bot.send_message(call.message.chat.id, f"Items para la categoría {categoria}:", reply_markup=keyboard)
+    keyboard = types.InlineKeyboardMarkup(row_width=2)
+
+    # Aquí agregas los ítems de la categoría al teclado.
+
+    if mostrar_boton_agregar:
+        boton_agregar_nuevo = types.InlineKeyboardButton("Agregar nuevo ítem", callback_data=f"agregar_nuevo_{categoria}")
+        keyboard.add(boton_agregar_nuevo)
+
+    # Agrega cualquier otro botón que necesites, como el botón "Salir".
+
+    bot.send_message(call.message.chat.id, f"Items disponibles en la categoría {categoria}:", reply_markup=keyboard)
 
 
 def mostrar_descripcion(call, item_nombre):
     item = obtener_item_por_nombre(item_nombre)
     if item:
         descripcion = item.get('descripcion', 'No hay descripción disponible')
-        bot.send_message(call.message.chat.id, f"Descripción de {item_nombre}:\n{descripcion}")
+        bot.send_message(call.message.chat.id, f"Descripción:\n{descripcion}")
         
         if 'imagen_url' in item:
             imagen_url = item['imagen_url']
@@ -130,37 +136,39 @@ def mostrar_descripcion(call, item_nombre):
 def mostrar_categorias_para_agregar_item(call):
     categorias_lista = list(categorias.items())
     keyboard = InlineKeyboardMarkup(row_width=2)
-
     for i in range(0, len(categorias_lista), 2):
         categoria1 = categorias_lista[i]
         nombre_categoria1 = categoria1[0]
         button1 = InlineKeyboardButton(text=nombre_categoria1, callback_data=nombre_categoria1)
-
-        if i + 1 < len(categorias_lista):  
+        if i + 1 < len(categorias_lista):
             categoria2 = categorias_lista[i + 1]
             nombre_categoria2 = categoria2[0]
             button2 = InlineKeyboardButton(text=nombre_categoria2, callback_data=nombre_categoria2)
             keyboard.add(button1, button2)
         else:
-            keyboard.add(button1)  
-
+            keyboard.add(button1)
     bot.send_message(call.message.chat.id, "Selecciona la categoría para agregar un ítem:", reply_markup=keyboard)
-
 
 def mostrar_items_categoria(call):
     categoria = call.data.split('seleccion_categoria_')[1]
     items = obtener_items_por_categoria(categoria)
+    
+    # Teclado para mostrar los ítems
     keyboard = InlineKeyboardMarkup(row_width=2)
     for item in items:
         boton_item = InlineKeyboardButton(text=item['nombre'], callback_data=f"item_{item['nombre']}")
         keyboard.add(boton_item)
+    
+    # Teclado para el botón "Agregar nuevo ítem"
+    keybor2 = InlineKeyboardMarkup(row_width=1)
     boton_agregar_nuevo = InlineKeyboardButton("Agregar nuevo ítem", callback_data=f"agregar_nuevo_{categoria}")
-    keyboard.add(boton_agregar_nuevo)
-    bot.send_message(call.message.chat.id, f"Ítems en la categoria:{categoria}:", reply_markup=keyboard)
+    keybor2.add(boton_agregar_nuevo)
+    
+    # Adjuntar ambos teclados en un solo mensaje
+    bot.send_message(call.message.chat.id, f"Ítems en la categoría: {categoria}", reply_markup=keyboard)
+    bot.send_message(call.message.chat.id, "", reply_markup=keybor2)
 
-#######################################################
 
-#######################################################
 
 
 
@@ -264,6 +272,7 @@ def construir_botones_categorias():
             button = types.InlineKeyboardButton(text=nombre_categoria, callback_data=nombre_categoria)
             buttons.append(button)
         keyboard.add(*buttons)
+   
     
     return keyboard
 
@@ -282,7 +291,10 @@ def construir_botones_categorias():
 
 def BotonesCategoria(call):
     keyboard = construir_botones_categorias()
-    bot.send_message(call.message.chat.id, "Botones para todas las categorías:", reply_markup=keyboard)
+    Boton = InlineKeyboardButton('Volver', callback_data="Volver")
+    keyboard.add(Boton)  # Agrega el botón "Volver" al mismo teclado que contiene los botones de categorías
+    bot.send_message(call.message.chat.id, "Escoja la categoría:", reply_markup=keyboard)
+
 
 
 
@@ -361,7 +373,7 @@ def Opciones(message):
             bot.send_message(message.chat.id, mensaje, reply_markup=markup)
             return
 
-    bot.send_message(message.chat.id, '¡Bienvenido! ¿Deseas crear una cuenta?', reply_markup=markup)
+    bot.send_message(message.chat.id, f"Que desea hacer?", reply_markup=markup)
 
     
 
