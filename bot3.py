@@ -30,8 +30,6 @@ def on_any_message(message):
             bot_activado = False
 
 
-
-    
 @bot.callback_query_handler(func=lambda call: True)
 def handle_button_click(call):
     if call.data == 'Clean access':
@@ -43,28 +41,49 @@ def handle_button_click(call):
         mostrar_descripcion(call, item_nombre)
     elif call.data == 'later':
         Regresar(call.message)
-    elif call.data.startswith('verificar_'):
-        categoria = call.data.split('_')[1]
-        enviar_items(call, categoria)
     elif call.data == 'Salir':
         Regresar(call.message)
     elif call.data == 'VerLista':
-      BotonesCategoria(call)
-    elif call.data in categorias: 
-        enviar_items(call, call.data)
+        # Al ver la lista, simplemente se muestran las categorías sin intentar agregar ítems.
+        BotonesCategoria(call)  # Ajustado para claridad, aunque el segundo parámetro ya no se usa.
     elif call.data == "AgregarItem":
-        BotonesCategoria(call)
-    elif call.data == "Volver":
-        Opciones(call.message)
+        # Cuando se quiere agregar un ítem, se deben mostrar las categorías con un contexto especial.
+        BotonesCategoriaParaAgregar(call)  # Esta función necesitará crear botones con un callback_data especial.
+    elif call.data.startswith('categoria_para_agregar_'):
+        # Este callback_data es especial para agregar ítems y se ajusta en BotonesCategoriaParaAgregar.
+        categoria = call.data[len("categoria_para_agregar_"):]
+        enviar_items(call, categoria, mostrar_boton_agregar=True)
     elif call.data.startswith('seleccion_categoria_'):
+        # Este caso parece ser una duplicación del propósito de 'categoria_para_agregar_', considera unificarlos.
         mostrar_items_categoria(call)
     elif call.data.startswith('agregar_nuevo_'):
         solicitar_info_nuevo_item(call)
-    elif call.data.startswith("categoria_"):
-     categoria = call.data[len("categoria_"):]
-     enviar_items(call, categoria, mostrar_boton_agregar=True)
+    elif call.data in categorias:
+        # Precaución: Este caso puede interferir con 'categoria_para_agregar_' si las categorías tienen el mismo nombre.
+        enviar_items(call, call.data, mostrar_boton_agregar=False)
     else:
         print("Se hizo clic en el botón:", call.data)
+
+
+def construir_botones_categorias_para_agregar():
+    categorias_lista = list(categorias.items())
+    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    for categoria in categorias_lista:
+        nombre_categoria = categoria[0]
+        # Nota el cambio en el callback_data para reflejar la acción de agregar un nuevo ítem.
+        button = types.InlineKeyboardButton(text=nombre_categoria, callback_data=f"categoria_para_agregar_{nombre_categoria}")
+        keyboard.add(button)
+    return keyboard
+
+
+
+
+
+def BotonesCategoriaParaAgregar(call):
+    keyboard = construir_botones_categorias_para_agregar()  # Asume una implementación similar a construir_botones_categorias pero con callback_data ajustado.
+    boton_volver = InlineKeyboardButton('Volver', callback_data="Volver")
+    keyboard.add(boton_volver)
+    bot.send_message(call.message.chat.id, "Seleccione la categoría para agregar un ítem:", reply_markup=keyboard)
 
 
 
