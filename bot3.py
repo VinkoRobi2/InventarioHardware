@@ -61,15 +61,19 @@ def handle_button_click(call):
     else:
         print("Se hizo clic en el botón:", call.data)
 
-
 def construir_botones_categorias_para_agregar():
     categorias_lista = list(categorias.items())
-    keyboard = types.InlineKeyboardMarkup(row_width=2)
-    for categoria in categorias_lista:
-        nombre_categoria = categoria[0]
-        button = types.InlineKeyboardButton(text=nombre_categoria, callback_data=f"categoria_para_agregar_{nombre_categoria}")
-        keyboard.add(button)
+    row_width = 2  
+    keyboard = types.InlineKeyboardMarkup(row_width=row_width)
+    for i in range(0, len(categorias_lista), row_width):
+        row_buttons = categorias_lista[i:i+row_width]
+        for categoria in row_buttons:
+            nombre_categoria = categoria[0]
+            button = types.InlineKeyboardButton(text=nombre_categoria, callback_data=f"categoria_para_agregar_{nombre_categoria}")
+            keyboard.add(button)
+    
     return keyboard
+
 
 
 
@@ -107,23 +111,24 @@ def obtener_items_por_categoria(categoria):
     categorias = items.get('categorias', {})
     return categorias.get(categoria, [])
 
-
 def enviar_items(call, categoria, mostrar_boton_agregar=False):
     items = obtener_items_por_categoria(categoria)
     keyboard = types.InlineKeyboardMarkup(row_width=2)
-    
-    for item in items:
-        texto_boton = f"{item['nombre']} - Cantidad: {item['cantidad']}"
-        callback_data = f"verificar_item_{item['nombre']}"
-        button = types.InlineKeyboardButton(text=texto_boton, callback_data=callback_data)
-        keyboard.add(button)
+    for i in range(0, len(items), 2):
+        item1 = items[i]
+        button1 = types.InlineKeyboardButton(text=f"{item1['nombre']} - Cantidad: {item1['cantidad']}",
+        callback_data=f"verificar_item_{item1['nombre']}")
+        keyboard.add(button1)
+        if i + 1 < len(items):
+            item2 = items[i + 1]
+            button2 = types.InlineKeyboardButton(text=f"{item2['nombre']} - Cantidad: {item2['cantidad']}",
+             callback_data=f"verificar_item_{item2['nombre']}")
+            keyboard.add(button2)
     if mostrar_boton_agregar:
         boton_agregar_nuevo = types.InlineKeyboardButton("Agregar nuevo ítem", callback_data=f"agregar_nuevo_{categoria}")
         keyboard.add(boton_agregar_nuevo)
-    
     button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
     keyboard.add(button_salir)
-    
     bot.send_message(call.message.chat.id, f"Ítems disponibles en la categoría {categoria}:", reply_markup=keyboard)
 
 
@@ -150,22 +155,23 @@ def mostrar_descripcion(call, item_nombre):
         bot.send_message(call.message.chat.id, f"No se encontró la descripción para {item_nombre}")
 
 
-
 def mostrar_categorias_para_agregar_item(call):
     categorias_lista = list(categorias.items())
-    keyboard = InlineKeyboardMarkup(row_width=2)
-    for i in range(0, len(categorias_lista), 2):
-        categoria1 = categorias_lista[i]
-        nombre_categoria1 = categoria1[0]
-        button1 = InlineKeyboardButton(text=nombre_categoria1, callback_data=nombre_categoria1)
-        if i + 1 < len(categorias_lista):
-            categoria2 = categorias_lista[i + 1]
-            nombre_categoria2 = categoria2[0]
-            button2 = InlineKeyboardButton(text=nombre_categoria2, callback_data=nombre_categoria2)
-            keyboard.add(button1, button2)
-        else:
-            keyboard.add(button1)
+    categorias_por_pares = [categorias_lista[i:i+2] for i in range(0, len(categorias_lista), 2)]
+    
+    row_width = 2  # Ancho de fila deseado
+    buttons = []
+    for categoria_par in categorias_por_pares:
+        for categoria in categoria_par:
+            nombre_categoria = categoria[0]
+            button = InlineKeyboardButton(text=nombre_categoria, callback_data=nombre_categoria)
+            buttons.append(button)
+    
+    keyboard = InlineKeyboardMarkup(row_width=row_width)
+    keyboard.add(*buttons)
+    
     bot.send_message(call.message.chat.id, "Selecciona la categoría para agregar un ítem:", reply_markup=keyboard)
+
 
 def mostrar_items_categoria(call):
     categoria = call.data.split('seleccion_categoria_')[1]
@@ -306,8 +312,6 @@ def construir_botones_categorias():
 
 
 
-
-
 def BotonesCategoria(call):
     keyboard = construir_botones_categorias()
     boton_volver = InlineKeyboardButton('Volver', callback_data="Volver")
@@ -397,7 +401,6 @@ def Opciones(message):
 
     
 
-
 def user_recognize(message, telegram_id):
     for item in usuarios:
         if item['telegram'] == telegram_id:
@@ -406,14 +409,11 @@ def user_recognize(message, telegram_id):
     on_any_message(message)
 
 
-
 def user_exists(telegram_id):
     for item in usuarios:
         if item['telegram'] == telegram_id:
             return True
     return False
-
-
 
 
 def cargar_usuarios():
