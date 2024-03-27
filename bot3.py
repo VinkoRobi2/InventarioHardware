@@ -29,7 +29,6 @@ def on_any_message(message):
             bot.reply_to(message, '¡Hola! Soy InventarioHardware, tu bot para conocer el inventario. ¿Deseas crear una cuenta?', reply_markup=markup)
             bot_activado = False
 
-
 @bot.callback_query_handler(func=lambda call: True)
 def handle_button_click(call):
     if call.data == 'Clean access':
@@ -58,8 +57,52 @@ def handle_button_click(call):
         enviar_items(call, call.data, mostrar_boton_agregar=False)
     elif call.data == "Volver":
         Opciones(call.message)
+    elif call.data == "EliminarItem":
+        mostrar_categorias_para_eliminar(call)
+    elif call.data.startswith("eliminar_"):
+        confirmar_eliminacion(call)
+    elif call.data.startswith("confirmar_eliminar_"):
+        eliminar_item(call)
+    elif call.data == "cancelar_eliminar":
+        bot.send_message(call.message.chat.id, "Eliminación cancelada.")
     else:
         print("Se hizo clic en el botón:", call.data)
+#######################################################################
+def mostrar_categorias_para_eliminar(call):
+    keyboard = construir_botones_categorias()
+    bot.send_message(call.message.chat.id, "Selecciona la categoría del ítem a eliminar:", reply_markup=keyboard)
+
+def mostrar_items_para_eliminar(call, categoria):
+    items = obtener_items_por_categoria(categoria)
+    keyboard = types.InlineKeyboardMarkup(row_width=1)
+    for item in items:
+        boton = types.InlineKeyboardButton(text=item['nombre'], callback_data=f"eliminar_{categoria}_{item['nombre']}")
+        keyboard.add(boton)
+    bot.send_message(call.message.chat.id, f"Selecciona el ítem a eliminar en {categoria}:", reply_markup=keyboard)
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('confirmar_eliminar_'))
+def eliminar_item_confirmado(call):
+    _, categoria, item_nombre = call.data.split('_')
+    eliminar_item(call, categoria, item_nombre)
+
+def eliminar_item(call, categoria, item_nombre):
+    with open(pathC, 'r') as file:
+        data = json.load(file)
+        items = data['categorias'][categoria]
+        data['categorias'][categoria] = [item for item in items if item['nombre'] != item_nombre]
+    with open(pathC, 'w') as file:
+        json.dump(data, file, indent=4)
+    bot.send_message(call.message.chat.id, "Ítem eliminado con éxito.")
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('eliminar_'))
+def confirmar_eliminacion(call):
+    categoria, item_nombre = call.data.split('_')[1:]
+    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    boton_si = types.InlineKeyboardButton("Sí, eliminar", callback_data=f"confirmar_eliminar_{categoria}_{item_nombre}")
+    boton_no = types.InlineKeyboardButton("Cancelar", callback_data="cancelar_eliminar")
+    keyboard.add(boton_si, boton_no)
+    bot.send_message(call.message.chat.id, "¿Deseas borrar este ítem?", reply_markup=keyboard)
+#########################################################################################################
 
 def construir_botones_categorias_para_agregar():
     categorias_lista = list(categorias.items())
@@ -84,8 +127,6 @@ def BotonesCategoriaParaAgregar(call):
     boton_volver = InlineKeyboardButton('Volver', callback_data="Volver")
     keyboard.add(boton_volver)
     bot.send_message(call.message.chat.id, "Seleccione la categoría para agregar un ítem:", reply_markup=keyboard)
-
-
 
 
 
@@ -128,8 +169,11 @@ def enviar_items(call, categoria, mostrar_boton_agregar=False):
         boton_agregar_nuevo = types.InlineKeyboardButton("Agregar nuevo ítem", callback_data=f"agregar_nuevo_{categoria}")
         keyboard.add(boton_agregar_nuevo)
     button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
-    keyboard.add(button_salir)
+    boton_volver = InlineKeyboardButton('Volver', callback_data="Volver")
+    keyboard.add(button_salir,boton_volver)
     bot.send_message(call.message.chat.id, f"Ítems disponibles en la categoría {categoria}:", reply_markup=keyboard)
+
+
 
 
 def mostrar_descripcion(call, item_nombre):
@@ -191,10 +235,6 @@ def mostrar_items_categoria(call):
     # Adjuntar ambos teclados en un solo mensaje
     bot.send_message(call.message.chat.id, f"Ítems en la categoría: {categoria}", reply_markup=keyboard)
     bot.send_message(call.message.chat.id, "", reply_markup=keybor2)
-
-#######################################################
-
-#######################################################
 
 
 
@@ -301,11 +341,6 @@ def construir_botones_categorias():
    
     
     return keyboard
-
-####################################################
-
-####################################################
-
 
 
 
