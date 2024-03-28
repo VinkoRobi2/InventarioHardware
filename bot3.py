@@ -53,56 +53,105 @@ def handle_button_click(call):
         mostrar_items_categoria(call)
     elif call.data.startswith('agregar_nuevo_'):
         solicitar_info_nuevo_item(call)
-    elif call.data in categorias:
-        enviar_items(call, call.data, mostrar_boton_agregar=False)
     elif call.data == "Volver":
         Opciones(call.message)
     elif call.data == "EliminarItem":
         mostrar_categorias_para_eliminar(call)
-    elif call.data.startswith("eliminar_"):
+    elif call.data.startswith("eliminar_") and not call.data.startswith("eliminar_categoria_"):
         confirmar_eliminacion(call)
     elif call.data.startswith("confirmar_eliminar_"):
         eliminar_item(call)
     elif call.data == "cancelar_eliminar":
         bot.send_message(call.message.chat.id, "Eliminación cancelada.")
+    elif call.data.startswith('eliminar_categoria_'):
+        handle_category_selection_for_deletion(call)
+    elif call.data.startswith("item_"):  # Manejar el clic en un botón de ítem
+        item_nombre = call.data[len("item_"):]
+        mostrar_descripcion(call, item_nombre)
     else:
         print("Se hizo clic en el botón:", call.data)
-#######################################################################
+
+
+#########################################################################################################
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith('eliminar_categoria_'))
+def handle_category_selection_for_deletion(call):
+    categoria = call.data[len("eliminar_categoria_"):]
+    mostrar_items_para_eliminar(call, categoria)
+
 def mostrar_categorias_para_eliminar(call):
-    keyboard = construir_botones_categorias()
+    keyboard = construir_botones_categoriass()
     bot.send_message(call.message.chat.id, "Selecciona la categoría del ítem a eliminar:", reply_markup=keyboard)
 
 def mostrar_items_para_eliminar(call, categoria):
     items = obtener_items_por_categoria(categoria)
-    keyboard = types.InlineKeyboardMarkup(row_width=1)
-    for item in items:
-        boton = types.InlineKeyboardButton(text=item['nombre'], callback_data=f"eliminar_{categoria}_{item['nombre']}")
-        keyboard.add(boton)
+    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    for i in range(0, len(items), 2):
+        item1 = items[i]
+        texto_boton1 = f"{item1['nombre']} ({item1['cantidad']})"
+        boton1 = types.InlineKeyboardButton(text=texto_boton1, callback_data=f"eliminar_{categoria}_{item1['nombre']}")
+        item2 = items[i+1] if i+1 < len(items) else None
+        if item2:
+            texto_boton2 = f"{item2['nombre']} ({item2['cantidad']})"
+            boton2 = types.InlineKeyboardButton(text=texto_boton2, callback_data=f"eliminar_{categoria}_{item2['nombre']}")
+            keyboard.add(boton1, boton2)
+        else:
+            keyboard.add(boton1)  
     bot.send_message(call.message.chat.id, f"Selecciona el ítem a eliminar en {categoria}:", reply_markup=keyboard)
 
-@bot.callback_query_handler(func=lambda call: call.data.startswith('confirmar_eliminar_'))
-def eliminar_item_confirmado(call):
-    _, categoria, item_nombre = call.data.split('_')
-    eliminar_item(call, categoria, item_nombre)
+
+@bot.callback_query_handler(func=lambda call: call.data in categorias)
+def handle_category_selection(call):
+    categoria = call.data
+    mostrar_items_para_eliminar(call, categoria)
+#########################################################
+def construir_botones_categoriass():
+    categorias_lista = list(categorias.keys())  
+    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    for i in range(0, len(categorias_lista), 2):
+        categoria1 = categorias_lista[i]
+        button1 = types.InlineKeyboardButton(text=categoria1, callback_data=f"eliminar_categoria_{categoria1}")
+        categoria2 = categorias_lista[i+1] if i+1 < len(categorias_lista) else None
+        if categoria2:
+            button2 = types.InlineKeyboardButton(text=categoria2, callback_data=f"eliminar_categoria_{categoria2}")
+            keyboard.add(button1, button2)
+        else:
+            keyboard.add(button1)  
+    return keyboard
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith("confirmar_eliminar_"))
+def confirmar_eliminacion(call):
+    _, categoria, item_nombre = call.data.split('_', 2)
+    eliminar_item(call, categoria, item_nombre)  # Pasar la categoría y el nombre del ítem como argumentos
+    # Ya no se agrega el botón de confirmación para eliminar
+    bot.send_message(call.message.chat.id, f"La cantidad de '{item_nombre}' se ha reducido.", reply_markup=None)
+
+
 
 def eliminar_item(call, categoria, item_nombre):
     with open(pathC, 'r') as file:
-        data = json.load(file)
-        items = data['categorias'][categoria]
-        data['categorias'][categoria] = [item for item in items if item['nombre'] != item_nombre]
-    with open(pathC, 'w') as file:
-        json.dump(data, file, indent=4)
-    bot.send_message(call.message.chat.id, "Ítem eliminado con éxito.")
+        data = json.load(file) 
+    items = data.get('categorias', {}).get(categoria, [])
+    item_modificado = False
+    for item in items:
+        if item['nombre'] == item_nombre:
+            cantidad = int(item.get('cantidad', 0))  # Convertir la cantidad a entero
+            if cantidad > 1: 
+                cantidad -= 1
+                item['cantidad'] = cantidad
+                bot.send_message(call.message.chat.id, f"Se redujo la cantidad de '{item_nombre}'. Ahora hay {cantidad} en stock.")
+            elif cantidad == 1:  
+                item['cantidad'] = 0
+                bot.send_message(call.message.chat.id, f"'{item_nombre}' ahora está fuera de stock.")
+            item_modificado = True
+            break
+    if item_modificado:
+        with open(pathC, 'w') as file:
+            json.dump(data, file, indent=4)
+    else:
+        bot.send_message(call.message.chat.id, "No se encontró el ítem o ya no había en stock.")
 
-@bot.callback_query_handler(func=lambda call: call.data.startswith('eliminar_'))
-def confirmar_eliminacion(call):
-    categoria, item_nombre = call.data.split('_')[1:]
-    keyboard = types.InlineKeyboardMarkup(row_width=2)
-    boton_si = types.InlineKeyboardButton("Sí, eliminar", callback_data=f"confirmar_eliminar_{categoria}_{item_nombre}")
-    boton_no = types.InlineKeyboardButton("Cancelar", callback_data="cancelar_eliminar")
-    keyboard.add(boton_si, boton_no)
-    bot.send_message(call.message.chat.id, "¿Deseas borrar este ítem?", reply_markup=keyboard)
-#########################################################################################################
+#####################################################################################
 
 def construir_botones_categorias_para_agregar():
     categorias_lista = list(categorias.items())
@@ -120,14 +169,11 @@ def construir_botones_categorias_para_agregar():
 
 
 
-
-
 def BotonesCategoriaParaAgregar(call):
     keyboard = construir_botones_categorias_para_agregar()  # Asume una implementación similar a construir_botones_categorias pero con callback_data ajustado.
     boton_volver = InlineKeyboardButton('Volver', callback_data="Volver")
     keyboard.add(boton_volver)
     bot.send_message(call.message.chat.id, "Seleccione la categoría para agregar un ítem:", reply_markup=keyboard)
-
 
 
 def guardar_nombre(message):
@@ -171,7 +217,7 @@ def enviar_items(call, categoria, mostrar_boton_agregar=False):
     button_salir = types.InlineKeyboardButton(text="Salir", callback_data="Salir")
     boton_volver = InlineKeyboardButton('Volver', callback_data="Volver")
     keyboard.add(button_salir,boton_volver)
-    bot.send_message(call.message.chat.id, f"Ítems disponibles en la categoría {categoria}:", reply_markup=keyboard)
+    bot.send_message(call.message.chat.id, f"Ítems disponibles en  la categoría {categoria}:", reply_markup=keyboard)
 
 
 
@@ -220,21 +266,15 @@ def mostrar_categorias_para_agregar_item(call):
 def mostrar_items_categoria(call):
     categoria = call.data.split('seleccion_categoria_')[1]
     items = obtener_items_por_categoria(categoria)
-    
-    # Teclado para mostrar los ítems
-    keyboard = InlineKeyboardMarkup(row_width=2)
-    for item in items:
-        boton_item = InlineKeyboardButton(text=item['nombre'], callback_data=f"item_{item['nombre']}")
-        keyboard.add(boton_item)
-    
-    # Teclado para el botón "Agregar nuevo ítem"
-    keybor2 = InlineKeyboardMarkup(row_width=1)
-    boton_agregar_nuevo = InlineKeyboardButton("Agregar nuevo ítem", callback_data=f"agregar_nuevo_{categoria}")
-    keybor2.add(boton_agregar_nuevo)
-    
-    # Adjuntar ambos teclados en un solo mensaje
+    keyboard = InlineKeyboardMarkup(row_width=2)  # Establecer el ancho de fila en 2
+    for i in range(0, len(items), 2):
+        boton1 = InlineKeyboardButton(text=items[i]['nombre'], callback_data=f"item_{items[i]['nombre']}")
+        boton2 = InlineKeyboardButton(text=items[i+1]['nombre'], callback_data=f"item_{items[i+1]['nombre']}") if i+1 < len(items) else None
+        if boton2:
+            keyboard.add(boton1, boton2)
+        else:
+            keyboard.add(boton1)
     bot.send_message(call.message.chat.id, f"Ítems en la categoría: {categoria}", reply_markup=keyboard)
-    bot.send_message(call.message.chat.id, "", reply_markup=keybor2)
 
 
 
@@ -337,32 +377,26 @@ def construir_botones_categorias():
             nombre_categoria = categoria[0]
             button = types.InlineKeyboardButton(text=nombre_categoria, callback_data=nombre_categoria)
             buttons.append(button)
-        keyboard.add(*buttons)
-   
-    
+        keyboard.add(*buttons) 
     return keyboard
 
 
 
 
 
-
 def BotonesCategoria(call):
-    keyboard = construir_botones_categorias()
-    boton_volver = InlineKeyboardButton('Volver', callback_data="Volver")
-    keyboard.add(boton_volver)  # El botón "Volver" siempre se agrega
-    bot.send_message(call.message.chat.id, "Escoja la categoría:", reply_markup=keyboard)
+    categorias_lista = list(categorias.keys())
+    keyboard = types.InlineKeyboardMarkup(row_width=2)  # Establecer el ancho de fila en 2
+    for i in range(0, len(categorias_lista), 2):
+        button1 = types.InlineKeyboardButton(text=categorias_lista[i], callback_data=f"seleccion_categoria_{categorias_lista[i]}")
+        button2 = types.InlineKeyboardButton(text=categorias_lista[i+1], callback_data=f"seleccion_categoria_{categorias_lista[i+1]}") if i+1 < len(categorias_lista) else None
+        if button2:
+            keyboard.add(button1, button2)
+        else:
+            keyboard.add(button1)
+    bot.send_message(call.message.chat.id, "Escoja la categoría que desea:", reply_markup=keyboard)
 
 
-
-
-
-@bot.callback_query_handler(func=lambda call: True)
-def handle_button_click(call):
-    if call.data == 'Clean access':
-        print("Se hizo clic en el botón 'Clean access'")
-    else:
-        print("Se hizo clic en el botón:", call.data)
 
 
 
